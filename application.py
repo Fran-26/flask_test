@@ -14,3 +14,15 @@ def hello(name):
 @app.route("/more")
 def more():
 	return render_template("more.html")
+	
+@app.route("/camaras")
+def camaras():
+	return render_template("camaras.html")
+	
+@app.route("/sensores")
+def sensores():
+	return render_template("sensores.html")
+	
+@app.route("/luces")
+def luces():
+	return render_template("luces.html")
