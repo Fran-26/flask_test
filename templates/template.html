@@ -4,7 +4,7 @@
 		<title>{% block heading  %}{% endblock  %}</title>
 		<style>
 			#cuerpo {
-				background-image: url('static/background');
+				background-image: url('/static/background');
 			  	background-repeat: no-repeat;
   				background-attachment: fixed;
   				background-size: 100% 100%;
@@ -12,7 +12,7 @@
 		</style>
 	</head>
 	<body>
-		<img src="{{url_for('static', filename='background.png')}}" />
+		{#<img src="{{url_for('static', filename='background.png')}}" />#}
 		<div id=cuerpo>
 	{% block body %}
 	{% endblock %}
