@@ -4,10 +4,6 @@
 		<title>{% block heading  %}{% endblock  %}</title>
 	</head>
 	<body>
-		<header>
-			 <!--img src="{{'static', url_for(filename='header.png')}}" alt="header image"--> 
-		</header>
-		 <!--div style="background-image: url("{{'static', url_for(filename='background.png')}}"-->
 		<img src="{{url_for('static', filename='background.png')}}" />
 	{% block body %}
 	{% endblock %}
