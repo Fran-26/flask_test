@@ -11,6 +11,6 @@ def index():
 def hello(name):
 	return "Hello, %s !" % name
 
-@app.route()("/more")
+@app.route("/more")
 def app():
 	return render_template("more.html")
