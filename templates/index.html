@@ -16,10 +16,40 @@
 			</div>
 			<div class="col-sm-4">
 				<h3>Sensores</h3>        
-				<p> Estadod de los sensores de las puertas y ventanas del sistema de alarmas</p>
+				<p> Estado de los sensores de las puertas y ventanas del sistema de alarmas</p>
 				 <img class="img-fluid" src="{{url_for('static', filename='sensores.jpg')}}" alt="sensores"> 
 			</div>
 		</div>
 		<a href="{{ url_for('more') }}">Ir a otra pagina</a>
 
+		<div class="row">
+			<div class="col-sm-4">
+					<div class="card-body">
+						<h4 class="card-title">Camaras</h4>
+						<p class="card-text">Visualizacion de las camaras de la casa</p>
+						<a href="#" class="btn btn-primary">Ir a Camaras</a>
+					</div>
+					<img class="card-img-bottom" src="{{url_for('static', filename='camaras.jpg')}}" alt="Camaras" style="width:100%">
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Luces</h4>
+						<p class="card-text">Acceso a los interruptores de las luces</p>
+						<a href="#" class="btn btn-primary">Ir a Luces</a>
+					</div>
+					<img class="card-img-bottom" src="{{url_for('static', filename='luces.jpg')}}" alt="Camaras" style="width:100%">
+				</div>				<div class="card">
+			</div>
+			<div class="col-sm-4">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Sensores</h4>
+						<p class="card-text">Estado de los sensores de las puertas y ventanas del sistema de alarma</p>
+						<a href="#" class="btn btn-primary">Ir a Sensores</a>
+					</div>
+					<img class="card-img-bottom" src="{{url_for('static', filename='sensores.jpg')}}" alt="Camaras" style="width:100%">
+				</div>				<div class="card">
+			</div>
 {% endblock %}
