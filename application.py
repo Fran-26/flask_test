@@ -12,5 +12,5 @@ def hello(name):
 	return "Hello, %s !" % name
 
 @app.route("/more")
-def app():
+def more():
 	return render_template("more.html")
