@@ -4,6 +4,21 @@
 		<h1>Bienvenido a mi pagina</h1>
 		<h2>hasta ahora esta vacio pero ya cargare algo</h2>
 		
+		<div class="col-sm-4">
+			<h3>Camaras</h3>
+			<p> Visualizacion de las camaras de la casa</p>
+			 <img class="img-fluid" src="{{url_for('static', filename='camaras.png')}}" alt="camaras"> 
+		</div>
+		<div class="col-sm-4">
+			<h3>Luces</h3>
+			<p> Acceso a los interruptores de las luces</p>
+			 <img class="img-fluid" src="{{url_for('static', filename='luces.png')}}" alt="luces"> 
+		</div>
+		<div class="col-sm-4">
+			<h3>Column 3</h3>        
+			<p> V a los sensores de las puertas y ventanas del sistema de alarmas</p>
+			 <img class="img-fluid" src="{{url_for('static', filename='sensores.png')}}" alt="sensores"> 
+		</div>
 		<a href="{{ url_for('more') }}">Ir a otra pagina</a>
 
 {% endblock %}
