@@ -5,15 +5,14 @@
 		<style>
 			#cuerpo {
 				background-image: url('{{url_for('static', filename='background.png')}}');
-				{%background-image: url('/static/background');%}
 			  	background-repeat: no-repeat;
   				background-attachment: fixed;
-  				background-size: 100% 100%;
+  				background-size: contain;
+				background-height: auto;
 			}
 		</style>
 	</head>
 	<body>
-		{#<img src="{{url_for('static', filename='background.png')}}" />#}
 		<div id=cuerpo>
 	{% block body %}
 	{% endblock %}
