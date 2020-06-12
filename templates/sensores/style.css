@@ -1,0 +1,38 @@
+#mapa {
+	position: relative;
+	z-index: -1
+}
+.topleft {
+	position: absolute;
+	width: 150px;
+	font-size: 18px;
+}
+#sensor_1 {
+	top: 350px;
+	left: 915px;
+}
+#sensor_2 {
+	top: 635px;
+	left: 600px;
+}
+#sensor_3 {
+	top: 140px;
+	left: 68px;
+}
+#sensor_4 {
+	top: 315px;
+	left: 410px;
+	text-align: center;
+}
+#sensor_5 {
+	top: 220px;
+	left: 200px;
+	width: 150px;
+	color: white;
+	text-align: center;
+}
+#connect {
+	position: absolute;
+	left: 30px;
+	top: 30px;			
+}

@@ -1,8 +1,20 @@
 {% extends "template.html" %}
+{% block head %}
+		<link rel="stylesheet" href="{{ url_for('templates\sensores', filename='style.css') }}">
+		<script src="{{ url_for('templates\sensores', filename='file.js') }}"></script>
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+{% endblock  %}
 {% block heading %} Sensores {% endblock %}
 {% block body  %}
-		<p>Aca deberian verse los sensores::</p>
-		<br>
+		<button type="button" id = "connect" onclick="activar()" class="btn btn-primary">Bloquear Alarma <i class="fas fa-lock"></i></button>
+		<div id="casa">
+  			<img src="{{ url_for('templates\sensores', filename='plano.png') }}" width="966" height="733">
+  			<div class="topleft" id = "sensor_1"></div>
+			<div class="topleft" id = "sensor_2"></div>
+  			<div class="topleft" id = "sensor_3"></div>
+			<div class="topleft" id = "sensor_4"></div>
+			<div class="topleft" id = "sensor_5"></div>
+			<div class="topleft" id = "html"></div>
 		<a href="{{ url_for('index') }}">Volver a Inicio</a>
 
 {% endblock %}
