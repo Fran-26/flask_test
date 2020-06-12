@@ -6,7 +6,7 @@ var armado = 0;
 var puerta_1, ventana_1, ventana_2, temperatura_1;
 
 function update (){
-	var reqURL = 'https://io.adafruit.com/api/v2/veintiseis/groups/default?x-aio-key=5515a3ad171c4034afe4ec86ed34999f'
+	var reqURL = 'https://io.adafruit.com/api/v2/veintiseis/groups/default?x-aio-key=aio_Nqnb30XqNIhapRSfk2XXijFhkvpd'
 	var req = new XMLHttpRequest();
 	req.open('GET', reqURL, true);
 	req.onreadystatechange = function () {
