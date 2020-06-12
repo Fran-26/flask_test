@@ -1,14 +1,14 @@
 {% extends "template.html" %}
 {% block head %}
-		<link rel="stylesheet" href="{{ url_for('templates\sensores', filename='style.css') }}">
-		<script src="{{ url_for('templates\sensores', filename='file.js') }}"></script>
+		<link rel="stylesheet" href="{{ url_for('templates', filename='sensores.css') }}">
+		<script src="{{ url_for('templates', filename='sensores.js') }}"></script>
 		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 {% endblock  %}
 {% block heading %} Sensores {% endblock %}
 {% block body  %}
 		<button type="button" id = "connect" onclick="activar()" class="btn btn-primary">Bloquear Alarma <i class="fas fa-lock"></i></button>
 		<div id="casa">
-  			<img src="{{ url_for('templates\sensores', filename='plano.png') }}" width="966" height="733">
+  			<img src="{{ url_for('templates', filename='plano.png') }}" width="966" height="733">
   			<div class="topleft" id = "sensor_1"></div>
 			<div class="topleft" id = "sensor_2"></div>
   			<div class="topleft" id = "sensor_3"></div>
