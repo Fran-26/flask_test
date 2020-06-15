@@ -9,10 +9,7 @@ db = scoped_session(sessionmaker(bind=engine))
 def main():
     REGISTRO = db.execute("SELECT * FROM REGISTRO").fetchall()
     for registro in REGISTRO:
-        #print("%s set to %s at %s",(registro.sensor_id, registro.estado, registro.tiempo))
-        #print(":id set to :estado at :time",
-        #{"id":registro.sensor_id,"estado":registro.estado,"tiempo":registro.tiempo})
-        print(f"{registro.sensor_id} set to {registro.estado} at {registro.tiempo}")
+        print(registro.sensor_id, " set to ", registro.estado, " at ", registro.tiempo)
 
 if __name__ == "__main__":
     main()
