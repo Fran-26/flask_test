@@ -9,6 +9,11 @@ db = scoped_session(sessionmaker(bind=engine))
 def main():
     REGISTRO = db.execute("SELECT * FROM REGISTRO JOIN SENSORES ON SENSORES.ID=REGISTRO.SENSOR_ID").fetchall()
     for registro in REGISTRO:
+<<<<<<< HEAD
         print(registro.sensor_id, " set to ", registro.estado, " at ", registro.tiempo)
+=======
+        print(registro.sensor, " set to ", registro.estado, " at ", registro.tiempo)
+
+>>>>>>> 666b41e8703e034c8df171e52edf96f12f523d85
 if __name__ == "__main__":
     main()
