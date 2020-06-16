@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask import jsonify
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
