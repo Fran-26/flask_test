@@ -37,12 +37,11 @@ def luces():
 @app.route("/valores")
 def valores():
 	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
-	valores2 = db.execute("select json_agg(t) from (SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID) t").fetchall()
+	#valores2 = db.execute("select json_agg(t) from (SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID) t").fetchall()
 	
+	dictionary = {}
 	for registro in valores:
+		dictionary [registro.sensor] = registro.estado
 		print(registro.sensor, " set to ", registro.estado)
-	
-	print()	
-	print (valores2)
 
-	return render_template()
+	return dictionary
