@@ -39,8 +39,8 @@ def valores():
 	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
 	valores2 = db.execute("select json_agg(t) from (SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID) t").fetchall()
 	
-    for registro in valores:
-        print(registro.sensor, " set to ", registro.estado)
+	for registro in valores:
+		print(registro.sensor, " set to ", registro.estado)
 	
 	print()	
 	print (valores2)
