@@ -2,11 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	setInterval (update, 3000)
 });
 
-var armado = 0; 
-var puerta_1, ventana_1, ventana_2, temperatura_1;
-
 function update (){
-	var reqURL = '{{ url_for('valores') }}'
 	var req = new XMLHttpRequest();
 	req.open('GET', reqURL, true);
 	req.onreadystatechange = function () {
