@@ -36,5 +36,6 @@ def luces():
 	
 @app.route("/valores")
 def valores():
-	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
+	#valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
+	valores = db.execute("select json_agg(t) from (SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID) t").fetchall()
 	return jsonify(valores)
