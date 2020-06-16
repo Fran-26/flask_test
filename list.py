@@ -7,9 +7,9 @@ engine = create_engine("postgresql://pi:0000@localhost:5432/home")
 db = scoped_session(sessionmaker(bind=engine))
 
 def main():
-    REGISTRO = db.execute("SELECT * FROM REGISTRO JOIN SENSORES ON SENSORES.ID=REGISTRO.SENSOR_ID").fetchall()
+    REGISTRO = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
     for registro in REGISTRO:
-        print(registro.sensor, " set to ", registro.estado, " at ", registro.tiempo)
+        print(registro.sensor, " set to ", registro.estado)
 
 if __name__ == "__main__":
     main()
