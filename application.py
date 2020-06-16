@@ -44,4 +44,4 @@ def valores():
 		dictionary [registro.sensor] = registro.estado
 		print(registro.sensor, " set to ", registro.estado)
 
-	return dictionary
+	return jsonify(dictionary)
