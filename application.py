@@ -64,7 +64,7 @@ def set(id, estado1):
 	try:
 		db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado});".format(id=id, estado=estado))
 		db.commit
-		print(hola)
+		print("hola")
 		db.execute("UPDATE ESTADO SET ESTADO={estado} WHERE ID={id};".format(id=id, estado=estado))
 		db.commit
 	except:
