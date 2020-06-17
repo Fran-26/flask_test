@@ -41,7 +41,7 @@ def valores():
 	
 	dictionary = {}
 	for registro in valores:
-		if registro.estado == true:
+		if registro.estado:
 			registro.estado=cerrado
 		else:
 			registro.estado=abierto
