@@ -41,7 +41,6 @@ def valores():
 	
 	dictionary = {}
 	for registro in valores:
-		if registro.estado:
 			dictionary [registro.sensor] = "cerrado"
 		else:
 			dictionary [registro.sensor] = "abierto"
@@ -49,17 +48,24 @@ def valores():
 
 	return jsonify(dictionary)
 	
-@app.route("/set/<int:id>/<string:estado>")
-def set(id, estado):
-	print (id," : ", estado)
+@app.route("/set/<int:id>/<string:estado1>")
+def set(id, estado1):
+	print (id," : ", estado1, "\n\n\n\n\n\n\n\n\n\n\n")
 	query=db.execute("SELECT * FROM SENSORES WHERE ID= {}".format(id)).fetchall()
 	
 	if query is None:
 		return "Error, no existe el sensor numero {}".format(id)
 	
+	if estado1=="t":
+		estado=true
+	else
+		estado=false
+		
 	try:
 		query=db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado})".format(id=id, estado=estado)).fetchall()
+		print ("funciono1\n\n\n\n\n\n\n\n\n\n\n")
 		query=db.execute("UPDATE ESTADO SET ESTADO {estado} WHERE ID={id})".format(id=id, estado=estado)).fetchall()
+		print ("funciono2\n\n\n\n\n\n\n\n\n\n\n")
 	except:
 		return "Algo salio mal"
 
