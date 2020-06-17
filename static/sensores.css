@@ -34,7 +34,6 @@
 }
 
 #casa {
-	background-image: url('{{url_for('static', filename='plano.png')}}');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: contain;
