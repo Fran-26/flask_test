@@ -10,8 +10,8 @@ def main():
 	REGISTRO = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
 	for registro in REGISTRO:
 		print(registro.sensor, " set to ", registro.estado)
-	id = "3"
-	estado = "True"
+	id = "2"
+	estado = "False"
 	x="INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado});".format(id=id, estado=estado)
 	print(x)
 	db.execute(x)
