@@ -51,5 +51,14 @@ def valores():
 	
 @app.route("/set/<int:id>/<string:estado1>")
 def set(id, estado1):
+	query=db.execute("SELECT * FROM SENSORES WHERE ID= {}".format(id)).fetchone()
+	
+	if query is None:
+		return "Error, no existe el sensor numero {}".format(id)
+	
+	if estado1 == "t":
+		estado = True
+	else:
+		estado = False
 	x="hola"
 	return (x)
