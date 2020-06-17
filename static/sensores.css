@@ -1,9 +1,5 @@
-#mapa {
-	position: relative;
-	z-index: -1
-}
 .topleft {
-	position: absolute;
+	position: relative;
 	width: 150px;
 	font-size: 18px;
 }
@@ -35,4 +31,11 @@
 	position: absolute;
 	left: 30px;
 	top: 30px;			
+}
+
+#casa {
+	background-image: url('{{url_for('static', filename='plano.png')}}');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: contain;
 }

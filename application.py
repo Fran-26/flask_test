@@ -37,9 +37,6 @@ def luces():
 @app.route("/valores")
 def valores():
 	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
-	#valores2 = db.execute("select json_agg(t) from (SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID) t").fetchall()
-	
-	dictionary = {}
 	for registro in valores:
 		if registro.estado:
 			dictionary [registro.sensor] = "cerrado"
@@ -48,6 +45,7 @@ def valores():
 		print(registro.sensor, " set to ", registro.estado)
 	return jsonify(dictionary)
 
+#TO DO:convertir a POST
 @app.route("/set/<string:id>/<string:estado>")
 def set(id, estado):
 	query=db.execute("SELECT * FROM SENSORES WHERE ID= {}".format(id)).fetchone()
