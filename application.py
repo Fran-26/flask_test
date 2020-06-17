@@ -62,12 +62,15 @@ def set(id, estado1):
 		estado = False
 	
 	try:
-		db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado});".format(id=id, estado=estado))
+		x="INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado});".format(id=id, estado=estado)
+		print(x)
+		db.execute(x)
 		db.commit
-		print("hola")
-		db.execute("UPDATE ESTADO SET ESTADO={estado} WHERE ID={id};".format(id=id, estado=estado))
+		y="UPDATE ESTADO SET ESTADO={estado} WHERE ID={id};".format(id=id, estado=estado)
+		print(y)
+		db.execute(y)
 		db.commit
 	except:
 		return "Algo salio mal"
-	x="hola"
+	x="{id} guardado {estado}".format(id=id, estado=estado)
 	return (x)
