@@ -65,10 +65,10 @@ def set(id, estado1):
 	try:
 		db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado})".format(id=id, estado=estado))
 		db.commit
-"""		x="UPDATE ESTADO SET ESTADO={estado} WHERE ID={id}".format(id=id, estado=estado)
-		print(x)
-		db.execute(x)
-		db.commit"""
+		#x="UPDATE ESTADO SET ESTADO={estado} WHERE ID={id}".format(id=id, estado=estado)
+		#print(x)
+		#db.execute(x)
+		#db.commit
 		print ("funciono2\n\n\n\n\n\n\n\n\n\n\n")
 	except:
 		return "Algo salio mal"
