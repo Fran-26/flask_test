@@ -42,10 +42,9 @@ def valores():
 	dictionary = {}
 	for registro in valores:
 		if registro.estado:
-			registro.estado="cerrado"
+			dictionary [registro.sensor] = "cerrado"
 		else:
-			registro.estado="abierto"
-		dictionary [registro.sensor] = registro.estado
+			dictionary [registro.sensor] = "abierto"
 		print(registro.sensor, " set to ", registro.estado)
 
 	return jsonify(dictionary)
