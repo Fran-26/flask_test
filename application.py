@@ -66,10 +66,12 @@ def set(id, estado1):
 	try:
 		x="INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado})".format(id=id, estado=estado)
 		print(x)
-		query=db.execute(x).fetchall()
+		db.execute(x)
+		db.commit
 		print ("funciono1\n\n\n\n\n\n\n\n\n\n\n")
 		x="UPDATE ESTADO SET ESTADO {estado} WHERE ID={id})".format(id=id, estado=estado)
-		query=db.execute(x).fetchall()
+		db.execute(x)
+		db.commit
 		print(x)
 		print ("funciono2\n\n\n\n\n\n\n\n\n\n\n")
 	except:
