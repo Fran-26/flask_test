@@ -49,7 +49,7 @@ def valores():
 
 	return jsonify(dictionary)
 	
-@app.route("/set/<int:id>/<string:estado>")
+@app.route("/set/<string:id>/<string:estado>")
 def set(id, estado):
 	query=db.execute("SELECT * FROM SENSORES WHERE ID= {}".format(id)).fetchone()
 	
