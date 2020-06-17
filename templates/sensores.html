@@ -5,6 +5,12 @@
 		<script src="{{ url_for('static', filename='sensores.js') }}"></script>
 		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 {% endblock  %}
+{% block style %}
+#casa{
+	background-image: url('{{url_for('static', filename='plano.png')}}');
+}
+{% endblock  %}
+
 {% block heading %} Sensores {% endblock %}
 {% block body  %}
 		<button type="button" id = "connect" onclick="activar()" class="btn btn-primary">Bloquear Alarma <i class="fas fa-lock"></i></button>
