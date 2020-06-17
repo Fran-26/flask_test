@@ -55,26 +55,26 @@ def set(id, estado1):
 	query=db.execute("SELECT * FROM SENSORES WHERE ID= {}".format(id)).fetchone()
 	print (query)
 	
-	if query is None:
-		return "Error, no existe el sensor numero {}".format(id)
+#	if query is None:
+#		return "Error, no existe el sensor numero {}".format(id)
 	
-	if estado1 == "t":
-		estado = True
-	else:
-		estado = False
+#	if estado1 == "t":
+#		estado = True
+#	else:
+#		estado = False
 		
-	try:
-		x="INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado})".format(id=id, estado=estado)
-		print(x)
-		db.execute(x)
-		db.commit
-		print ("funciono1\n\n\n\n\n\n\n\n\n\n\n")
-		x="UPDATE ESTADO SET ESTADO={estado} WHERE ID={id}".format(id=id, estado=estado)
-		print(x)
-		db.execute(x)
-		db.commit
-		print ("funciono2\n\n\n\n\n\n\n\n\n\n\n")
-	except:
-		return "Algo salio mal"
+#	try:
+#		x="INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado})".format(id=id, estado=estado)
+#		print(x)
+#		db.execute(x)
+#		db.commit
+#		print ("funciono1\n\n\n\n\n\n\n\n\n\n\n")
+#		x="UPDATE ESTADO SET ESTADO={estado} WHERE ID={id}".format(id=id, estado=estado)
+#		print(x)
+#		db.execute(x)
+#		db.commit
+#		print ("funciono2\n\n\n\n\n\n\n\n\n\n\n")
+#	except:
+#		return "Algo salio mal"
 
 	return (id, " set to ", estado)
