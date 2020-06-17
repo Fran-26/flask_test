@@ -21,19 +21,19 @@ def hello(name):
 @app.route("/more")
 def more():
 	return render_template("more.html")
-	
+
 @app.route("/camaras")
 def camaras():
 	return render_template("camaras.html")
-	
+
 @app.route("/sensores")
 def sensores():
 	return render_template("sensores.html")
-	
+
 @app.route("/luces")
 def luces():
 	return render_template("luces.html")
-	
+
 @app.route("/valores")
 def valores():
 	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
@@ -46,9 +46,8 @@ def valores():
 		else:
 			dictionary [registro.sensor] = "abierto"
 		print(registro.sensor, " set to ", registro.estado)
-
 	return jsonify(dictionary)
-	
+
 @app.route("/set/<string:id>/<string:estado>")
 def set(id, estado):
 	query=db.execute("SELECT * FROM SENSORES WHERE ID= {}".format(id)).fetchone()

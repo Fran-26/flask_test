@@ -7,9 +7,9 @@ engine = create_engine("postgresql://pi:0000@localhost:5432/home")
 db = scoped_session(sessionmaker(bind=engine))
 
 def main():
-    REGISTRO = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
-    for registro in REGISTRO:
-        print(registro.sensor, " set to ", registro.estado)
+	REGISTRO = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
+	for registro in REGISTRO:
+		print(registro.sensor, " set to ", registro.estado)
 	id = "3"
 	estado = "True"
 	x="INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado});".format(id=id, estado=estado)
@@ -20,6 +20,6 @@ def main():
 	print(y)
 	db.execute(y)
 	db.commit
-		
+
 if __name__ == "__main__":
-    main()
+	main()
