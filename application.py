@@ -56,14 +56,9 @@ def set(id, estado):
 		return "Error, no existe el sensor numero {}".format(id)
 		
 	try:
-		x="INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado});".format(id=id, estado=estado)
-		print(x)
-		db.execute(x)
-		db.commit
-		y="UPDATE ESTADO SET ESTADO={estado} WHERE ID={id};".format(id=id, estado=estado)
-		print(y)
-		db.execute(y)
-		db.commit
+		db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado});".format(id=id, estado=estado))
+		db.execute("UPDATE ESTADO SET ESTADO={estado} WHERE ID={id};".format(id=id, estado=estado))
+		db.commit()
 	except:
 		return "Algo salio mal"
 	x="{id} guardado {estado}".format(id=id, estado=estado)
