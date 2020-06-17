@@ -58,7 +58,7 @@ def set(id, estado1):
 	
 	if estado1=="t":
 		estado=true
-	else
+	else:
 		estado=false
 		
 	try:
