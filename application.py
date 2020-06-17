@@ -49,18 +49,13 @@ def valores():
 
 	return jsonify(dictionary)
 	
-@app.route("/set/<int:id>/<string:estado1>")
-def set(id, estado1):
+@app.route("/set/<int:id>/<string:estado>")
+def set(id, estado):
 	query=db.execute("SELECT * FROM SENSORES WHERE ID= {}".format(id)).fetchone()
 	
 	if query is None:
 		return "Error, no existe el sensor numero {}".format(id)
-	
-	if estado1 == "t":
-		estado = True
-	else:
-		estado = False
-	
+		
 	try:
 		x="INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado});".format(id=id, estado=estado)
 		print(x)
