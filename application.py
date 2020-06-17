@@ -51,30 +51,27 @@ def valores():
 	
 @app.route("/set/<int:id>/<string:estado1>")
 def set(id, estado1):
-	print (id," : ", estado1, "\n\n\n\n\n\n\n\n\n\n\n")
 	query=db.execute("SELECT * FROM SENSORES WHERE ID= {}".format(id)).fetchone()
-	print (query)
 	
-#	if query is None:
-#		return "Error, no existe el sensor numero {}".format(id)
+	if query is None:
+		return "Error, no existe el sensor numero {}".format(id)
 	
-#	if estado1 == "t":
-#		estado = True
-#	else:
-#		estado = False
+	if estado1 == "t":
+		estado = True
+	else:
+		estado = False
 		
-#	try:
-#		x="INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado})".format(id=id, estado=estado)
-#		print(x)
-#		db.execute(x)
-#		db.commit
-#		print ("funciono1\n\n\n\n\n\n\n\n\n\n\n")
-#		x="UPDATE ESTADO SET ESTADO={estado} WHERE ID={id}".format(id=id, estado=estado)
-#		print(x)
-#		db.execute(x)
-#		db.commit
-#		print ("funciono2\n\n\n\n\n\n\n\n\n\n\n")
-#	except:
-#		return "Algo salio mal"
+	try:
+		db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado})".format(id=id, estado=estado))
+		db.commit
+		print ("funciono1\n\n\n\n\n\n\n\n\n\n\n")
+		x="UPDATE ESTADO SET ESTADO={estado} WHERE ID={id}".format(id=id, estado=estado)
+		print(x)
+		db.execute(x)
+		db.commit
+		print ("funciono2\n\n\n\n\n\n\n\n\n\n\n")
+	except:
+		return "Algo salio mal"
 
-	return (id, " set to ", estado)
+	x= (id, " set to ", estado)
+	return (x)
