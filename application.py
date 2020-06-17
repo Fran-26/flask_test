@@ -41,6 +41,7 @@ def valores():
 	
 	dictionary = {}
 	for registro in valores:
+		if registro.estado:
 			dictionary [registro.sensor] = "cerrado"
 		else:
 			dictionary [registro.sensor] = "abierto"
