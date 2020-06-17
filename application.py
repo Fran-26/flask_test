@@ -56,10 +56,10 @@ def set(id, estado1):
 	if query is None:
 		return "Error, no existe el sensor numero {}".format(id)
 	
-	if estado1=="t":
-		estado=true
+	if estado1 == "t":
+		estado=True
 	else:
-		estado=false
+		estado=False
 		
 	try:
 		query=db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado})".format(id=id, estado=estado)).fetchall()
