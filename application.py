@@ -37,6 +37,7 @@ def luces():
 @app.route("/valores")
 def valores():
 	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
+	dictionary={}
 	for registro in valores:
 		if registro.estado:
 			dictionary [registro.sensor] = "cerrado"
