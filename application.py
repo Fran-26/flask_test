@@ -60,5 +60,12 @@ def set(id, estado1):
 		estado = True
 	else:
 		estado = False
+	
+	try:
+		db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado})".format(id=id, estado=estado))
+		db.commit
+		print ("funciono1\n\n\n\n\n\n\n\n\n\n\n")
+	except:
+		return "Algo salio mal"
 	x="hola"
 	return (x)
