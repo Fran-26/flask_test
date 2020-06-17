@@ -16,7 +16,6 @@ function update (){
 			sensor_5.innerHTML = "Temperatura del Cuarto: " + "0" + "°/ " + humedad_cuarto;
 			humedad_sala = "0";
 			humedad_cuarto = "0";
-			);
 		}
 		else {
 	  	html.innerHTML = "<p>error "+req.status;
