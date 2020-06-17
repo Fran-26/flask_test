@@ -15,11 +15,25 @@ def main():
 	x="INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado});".format(id=id, estado=estado)
 	print(x)
 	db.execute(x)
-	db.commit
+	z=db.commit
+	print(z)
 	y="UPDATE ESTADO SET ESTADO={estado} WHERE ID={id};".format(id=id, estado=estado)
 	print(y)
 	db.execute(y)
-	db.commit
+	h=db.commit
+	print(h)
 
 if __name__ == "__main__":
 	main()
+
+"""
+	# INSERT..RETURNING
+	result = table.insert().returning(table.c.col1, table.c.col2).\
+		values(name='foo')
+	print(result.fetchall())
+
+	# UPDATE..RETURNING
+	result = table.update().returning(table.c.col1, table.c.col2).\
+		where(table.c.name=='foo').values(name='bar')
+	print(result.fetchall())
+"""
