@@ -52,7 +52,7 @@ def valores():
 @app.route("/set/<int:id>/<string:estado1>")
 def set(id, estado1):
 	print (id," : ", estado1, "\n\n\n\n\n\n\n\n\n\n\n")
-	query=db.execute("SELECT * FROM SENSORES WHERE ID= {}".format(id)).fetchall()
+	query=db.execute("SELECT * FROM SENSORES WHERE ID= {}".format(id)).fetchone()
 	print (query)
 	
 	if query is None:
@@ -64,9 +64,13 @@ def set(id, estado1):
 		estado = False
 		
 	try:
-		query=db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado})".format(id=id, estado=estado)).fetchall()
+		x="INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado})".format(id=id, estado=estado)
+		print(x)
+		query=db.execute(x).fetchall()
 		print ("funciono1\n\n\n\n\n\n\n\n\n\n\n")
-		query=db.execute("UPDATE ESTADO SET ESTADO {estado} WHERE ID={id})".format(id=id, estado=estado)).fetchall()
+		x="UPDATE ESTADO SET ESTADO {estado} WHERE ID={id})".format(id=id, estado=estado)
+		query=db.execute(x).fetchall()
+		print(x)
 		print ("funciono2\n\n\n\n\n\n\n\n\n\n\n")
 	except:
 		return "Algo salio mal"
