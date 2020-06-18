@@ -1,7 +1,7 @@
 {% extends "template.html" %}
 {% block head %}
 		<link rel="stylesheet" href="{{ url_for('static', filename='sensores.css') }}">
-		<script type="text/javascript"> window.reqURL = 'http://192.168.100.14:5000/valores' </script>
+		<script type="text/javascript"> window.reqURL = '{{ url_for('valores') }}' </script>
 		<script src="{{ url_for('static', filename='sensores.js') }}"></script>
 		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 {% endblock  %}
