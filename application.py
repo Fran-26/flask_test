@@ -63,7 +63,7 @@ def set(id, estado):
 	x="{id} guardado {estado}".format(id=id, estado=estado)
 	return (x)
 	
-@app.route("/table/<string:id>")
-def table(id):
+@app.route("/tabla/<string:id>")
+def tabla(id):
 	#TODO
 	return "hola :D"

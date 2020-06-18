@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function update (){
 	var req = new XMLHttpRequest();
-	req.open('GET', reqURL, true);
+	req.open('GET', '/valores', true);
 	req.onreadystatechange = function () {
 	if (req.readyState == 4)
 		if  (req.status == 200) {
@@ -26,7 +26,7 @@ function update (){
 }
 
 function loadTable(data) {
-	URL = tableURL + "\\" + data
+	URL = '/tabla/' + data
 	var xhttp = new XMLHttpRequest();
 	xhttp.open("GET", URL, true);
 	xhttp.onreadystatechange = function() {
