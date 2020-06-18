@@ -62,3 +62,8 @@ def set(id, estado):
 		return "Algo salio mal"
 	x="{id} guardado {estado}".format(id=id, estado=estado)
 	return (x)
+	
+@app.route("/table/<string:id>")
+def table(id):
+	#TODO
+	return "hola :D"

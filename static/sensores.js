@@ -9,18 +9,32 @@ function update (){
 	if (req.readyState == 4)
 		if  (req.status == 200) {
 			obj = JSON.parse(req.responseText);
-			sensor_1.innerHTML = "Puerta Principal: " + obj.puerta_1;
-			sensor_2.innerHTML = "Ventana Sala: " + obj.sala_1;
-			sensor_3.innerHTML = "Ventana Atras: " + obj.ventana_1;
-			sensor_4.innerHTML = "Temperatura de la Sala: " + "0" + "°/ " + humedad_sala;
-			sensor_5.innerHTML = "Temperatura del Cuarto: " + "0" + "°/ " + humedad_cuarto;
+			jsensor_1.innerHTML = "Puerta Principal: " + obj.puerta_1;
+			jsensor_2.innerHTML = "Ventana Sala: " + obj.sala_1;
+			jsensor_3.innerHTML = "Ventana Atras: " + obj.ventana_1;
 			humedad_sala = "0";
 			humedad_cuarto = "0";
+			jsensor_4.innerHTML = "Temperatura de la Sala: " + "0" + "°/ " + humedad_sala;
+			jsensor_5.innerHTML = "Temperatura del Cuarto: " + "0" + "°/ " + humedad_cuarto;
 		}
 		else {
-	  	html.innerHTML = "<p>error "+req.status;
+	  	html.innerHTML = "<p>error "+req.status + "</p>";
  		}
 	};
 	req.send(null);
 
+}
+
+function loadTable(data) {
+	URL = tableURL + "\\" + data
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("GET", URL, true);
+	xhttp.onreadystatechange = function() {
+	if (this.readyState == 4 && this.status == 200) {
+		document.getElementById("html").innerHTML = this.responseText;
+		}
+	else
+		html.innerHTML = "wtf :D"
+	};
+	xhttp.send(null);
 }

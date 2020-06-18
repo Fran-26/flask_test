@@ -2,6 +2,7 @@
 {% block head %}
 		<link rel="stylesheet" href="{{ url_for('static', filename='sensores.css') }}">
 		<script type="text/javascript"> window.reqURL = '{{ url_for('valores') }}' </script>
+		<script type="text/javascript"> window.tableURL = '{{ url_for('table') }}' </script>
 		<script src="{{ url_for('static', filename='sensores.js') }}"></script>
 		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 {% endblock  %}
@@ -14,12 +15,11 @@
 {% block heading %} Sensores {% endblock %}
 {% block body  %}
 			<img src="{{url_for('static', filename='plano.png')}}" width="100%" height="auto">
-  			<div class="topleft" id = "sensor_1">sensor1</div>
-			<div class="topleft" id = "sensor_2">sensor2</div>
-  			<div class="topleft" id = "sensor_3">sensor3</div>
-			<div class="topleft" id = "sensor_4">sensor4</div>
-			<div class="topleft" id = "sensor_5">sensor5</div>
+  			<div class="topleft" id = "sensor_1"><button onclick="loadTable(1)" id = "jsensor_1" >Sensor 1</button></div>
+  			<div class="topleft" id = "sensor_2"><button onclick="loadTable(2)" id = "jsensor_2" >Sensor 2</button></div>
+  			<div class="topleft" id = "sensor_3"><button onclick="loadTable(3)" id = "jsensor_3" >Sensor 3</button></div>
+  			<div class="topleft" id = "sensor_4"><button onclick="loadTable(4)" id = "jsensor_4" >Sensor 4</button></div>
+  			<div class="topleft" id = "sensor_5"><button onclick="loadTable(5)" id = "jsensor_5" >Sensor 5</button></div>
 			<div class="topleft" id = "html"></div>
-		<a href="{{ url_for('index') }}">Volver a Inicio</a>
 
 {% endblock %}
