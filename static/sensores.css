@@ -1,31 +1,29 @@
 .topleft {
-	position: relative;
+	position: absolute;
+	text-align: center;
 	width: 150px;
 	font-size: 18px;
 }
 #sensor_1 {
-	top: 350px;
-	left: 915px;
+	bottom: 25%;
+	right: 5%;
 }
 #sensor_2 {
-	top: 635px;
-	left: 600px;
+	bottom: 20%;
+	right: 15%;
 }
 #sensor_3 {
-	top: 140px;
-	left: 68px;
+	top: 20%;
+	left: 5%;
 }
 #sensor_4 {
-	top: 315px;
-	left: 410px;
-	text-align: center;
+	top: 45%;
+	left: 50%;
 }
 #sensor_5 {
-	top: 220px;
-	left: 200px;
-	width: 150px;
+	top: 35%;
+	left: 20%;
 	color: white;
-	text-align: center;
 }
 #connect {
 	position: absolute;
@@ -34,7 +32,5 @@
 }
 
 #casa {
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: contain;
+	position: relative;
 }
