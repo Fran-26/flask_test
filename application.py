@@ -36,7 +36,7 @@ def luces():
 @app.route("/valores")
 def valores():
 	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
-	dictionary={}
+	dictionary=[]
 	for id, registro in enumerate(valores):
 		dictionary.append({"id": id, "sensor": registro.sensor, "estado" : registro.estado })
 	return jsonify(dictionary)
