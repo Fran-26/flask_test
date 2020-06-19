@@ -8,7 +8,7 @@ def main():
 	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
 	dictionary={}
 	for id, registro in enumerate(valores):
-		dictionary[id] = {"sensor": registro.sensor, "estado" = registro.estado }
+		dictionary[id] = {"sensor": registro.sensor, "estado" : registro.estado }
 		'''if registro.estado:
 			dictionary [registro.sensor] = "cerrado"
 		else:
