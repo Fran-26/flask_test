@@ -14,7 +14,7 @@ def main():
 
 	dictionary2={}
 	for id, registro in enumerate(valores):
-		dictionary2.sensores["id"] = {"sensor": registro.sensor, "estado" : registro.estado }
+		dictionary2["id"] = {"sensor": registro.sensor, "estado" : registro.estado }
 	x=json.dumps(dictionary2)
 	print(x)
 
