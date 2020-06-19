@@ -38,3 +38,26 @@ function loadTable(data) {
 	};
 	xhttp.send(null);
 }
+/*
+function update (){
+	var req = new XMLHttpRequest();
+	req.open('GET', '/valores', true);
+	req.onreadystatechange = function () {
+		if (req.readyState == 4) && (req.status == 200) {
+			obj = JSON.parse(req.responseText);
+			obj.feeds.forEach((item,i) => {
+				document.getElementById("jsensor_"+i).innerHTML = item.responseText;
+				if
+			});
+		}
+		else {
+		html.innerHTML = "<p>error "+req.status + "</p>";
+		}
+	};
+	req.send(null);
+}
+
+	if ( document.getElementById("jsensor_"+i).classList.contains('MyClass') )
+		document.getElementById("jsensor_"+i).classList.toggle('MyClass');
+	
+/*
