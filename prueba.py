@@ -17,7 +17,7 @@ def main():
 
 	dictionary2={}
 	for id, registro in enumerate(valores):
-		dictionary2[sensores] = {"id": id, "sensor": registro.sensor, "estado" : registro.estado }
+		dictionary2["sensores"] = {"id": id, "sensor": registro.sensor, "estado" : registro.estado }
 	print(dictionary2)
 
 if __name__ == "__main__":
