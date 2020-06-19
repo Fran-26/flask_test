@@ -46,14 +46,14 @@ function update (){
 		if (req.readyState == 4 && req.status == 200) {
 			obj = JSON.parse(req.responseText);
 			obj.forEach((item) => {
-				document.getElementById(item.id).innerHTML = item.sensor + " " + item.estado;
+				document.getElementById(item.id.toString()).innerHTML = item.sensor + " " + item.estado;
 				if (item.estado == 1){
-					document.getElementById(item.id).classList.add('btn btn-success');
-					document.getElementById(item.id).classList.toggle('btn btn-danger');
+					document.getElementById(item.id.toString()).classList.add('btn btn-success');
+					document.getElementById(item.id.toString()).classList.toggle('btn btn-danger');
 				}
 				else if (item.estado == 0){
-					document.getElementById(item.id).classList.add('btn btn-danger');
-					document.getElementById(item.id).classList.toggle('btn btn-success');
+					document.getElementById(item.id.toString()).classList.add('btn btn-danger');
+					document.getElementById(item.id.toString()).classList.toggle('btn btn-success');
 				}
 			});
 		}
