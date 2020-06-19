@@ -46,7 +46,7 @@ function update (){
 		if (req.readyState == 4 && req.status == 200) {
 			obj = JSON.parse(req.responseText);
 			obj.forEach((item) => {
-				var "s"+id=item.id.toString();
+				var id="s"+item.id.toString();
 				document.getElementById(id).innerHTML = item.sensor + " " + item.estado;
 				if (item.estado == 1){
 					document.getElementById(id).classList.add('btn btn-success');
