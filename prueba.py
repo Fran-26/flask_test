@@ -15,5 +15,10 @@ def main():
 			dictionary [registro.sensor] = "abierto" '''
 	print(dictionary)
 
-if __name__ == "__main__":
+	dictionary2=[]
+	for id, registro in enumerate(valores):
+		dictionary2[id] = {"sensor": registro.sensor, "estado" : registro.estado }
+	print(dictionary2)
+
+	if __name__ == "__main__":
     main()
