@@ -48,14 +48,10 @@ function update (){
 			obj.forEach((item) => {
 				var id="s"+item.id.toString();
 				document.getElementById(id).innerHTML = item.sensor + " " + item.estado;
-				if (item.estado == 1){
-					document.getElementById(id).classList.add('btn btn-success');
-					document.getElementById(id).classList.toggle('btn btn-danger');
-				}
-				else if (item.estado == 0){
-					document.getElementById(id).classList.add('btn btn-danger');
-					document.getElementById(id).classList.toggle('btn btn-success');
-				}
+				if (item.estado == 1)
+					document.getElementById(id).className = "btn btn-success";
+				else if (item.estado == 0)
+					document.getElementById(id).className = "btn btn-danger";
 			});
 		}
 		else {
