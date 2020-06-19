@@ -55,7 +55,7 @@ function update (){
 					document.getElementById("jsensor_"+i).classList.add('btn btn-danger');
 					document.getElementById("jsensor_"+i).classList.toggle('btn btn-success');
 				}
-			});
+			}
 		}
 		else {
 		html.innerHTML = "<p>error "+req.status + "</p>";
