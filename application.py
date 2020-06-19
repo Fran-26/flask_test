@@ -1,5 +1,3 @@
-import json
-
 from flask import Flask, render_template, jsonify
 
 from sqlalchemy import create_engine
@@ -40,8 +38,8 @@ def valores():
 	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
 	dictionary={}
 	for id, registro in enumerate(valores):
-		dictionary[id] = {"id": id, "sensor": registro.sensor, "estado" : registro.estado }
-	return json.dumps(dictionary)
+		dictionary.append({"id": id, "sensor": registro.sensor, "estado" : registro.estado })
+	return jsonify(dictionary)
 
 #TO DO:convertir a POST
 @app.route("/set/<string:id>/<string:estado>")
