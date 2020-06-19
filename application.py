@@ -38,12 +38,8 @@ def luces():
 def valores():
 	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
 	dictionary={}
-	for registro in valores:
-		if registro.estado:
-			dictionary [registro.sensor] = "cerrado"
-		else:
-			dictionary [registro.sensor] = "abierto"
-		print(registro.sensor, " set to ", registro.estado)
+	for id, registro in enumerate(valores):
+		dictionary[id] = {"sensor": registro.sensor, "estado" : registro.estado }
 	return jsonify(dictionary)
 
 #TO DO:convertir a POST
