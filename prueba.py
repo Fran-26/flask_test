@@ -20,5 +20,5 @@ def main():
 		dictionary2[id] = {"sensor": registro.sensor, "estado" : registro.estado }
 	print(dictionary2)
 
-	if __name__ == "__main__":
-    main()
+if __name__ == "__main__":
+	main()
