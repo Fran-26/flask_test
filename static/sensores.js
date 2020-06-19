@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 	setInterval (update, 3000)
 });
-
+/*
 function update (){
 	var req = new XMLHttpRequest();
 	req.open('GET', '/valores', true);
@@ -24,7 +24,7 @@ function update (){
 	req.send(null);
 
 }
-
+*/
 function loadTable(data) {
 	URL = '/tabla/' + data
 	var xhttp = new XMLHttpRequest();
@@ -38,7 +38,7 @@ function loadTable(data) {
 	};
 	xhttp.send(null);
 }
-/*
+
 function update (){
 	var req = new XMLHttpRequest();
 	req.open('GET', '/valores', true);
@@ -46,8 +46,15 @@ function update (){
 		if (req.readyState == 4) && (req.status == 200) {
 			obj = JSON.parse(req.responseText);
 			obj.feeds.forEach((item,i) => {
-				document.getElementById("jsensor_"+i).innerHTML = item.responseText;
-				if
+				document.getElementById("jsensor_"+i).innerHTML = item.sensor + " " + item.estado;
+				if (item.estado == 1){
+					document.getElementById("jsensor_"+i).classList.add('btn btn-success');
+					document.getElementById("jsensor_"+i).classList.toggle('btn btn-danger');
+				}
+				else{
+					document.getElementById("jsensor_"+i).classList.add('btn btn-danger');
+					document.getElementById("jsensor_"+i).classList.toggle('btn btn-success');
+				}
 			});
 		}
 		else {
@@ -56,8 +63,3 @@ function update (){
 	};
 	req.send(null);
 }
-
-	if ( document.getElementById("jsensor_"+i).classList.contains('MyClass') )
-		document.getElementById("jsensor_"+i).classList.toggle('MyClass');
-	
-/*
