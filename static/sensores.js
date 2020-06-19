@@ -43,7 +43,7 @@ function update (){
 	var req = new XMLHttpRequest();
 	req.open('GET', '/valores', true);
 	req.onreadystatechange = function () {
-		if (req.readyState == 4) && (req.status == 200) {
+		if (req.readyState == 4 && req.status == 200) {
 			obj = JSON.parse(req.responseText);
 			obj.feeds.forEach((item,i) => {
 				document.getElementById("jsensor_"+i).innerHTML = item.sensor + " " + item.estado;
