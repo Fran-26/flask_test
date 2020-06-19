@@ -1,5 +1,6 @@
-from flask import Flask, render_template
-from flask import jsonify
+import json
+
+from flask import Flask, render_template, jsonify
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -40,7 +41,7 @@ def valores():
 	dictionary={}
 	for id, registro in enumerate(valores):
 		dictionary[id] = {"id": id, "sensor": registro.sensor, "estado" : registro.estado }
-	return jsonify(dictionary)
+	return json.dumps(dictionary)
 
 #TO DO:convertir a POST
 @app.route("/set/<string:id>/<string:estado>")
