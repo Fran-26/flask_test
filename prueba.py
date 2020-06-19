@@ -13,7 +13,7 @@ def main():
 			dictionary [registro.sensor] = "cerrado"
 		else:
 			dictionary [registro.sensor] = "abierto" '''
-		print(dictionary)
+	print(dictionary)
 
 if __name__ == "__main__":
     main()
