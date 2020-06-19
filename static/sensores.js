@@ -45,18 +45,17 @@ function update (){
 	req.onreadystatechange = function () {
 		if (req.readyState == 4 && req.status == 200) {
 			obj = JSON.parse(req.responseText);
-			var i;
-			for (i = 0; i < 5; i++) {
-				document.getElementById("jsensor_"+i).innerHTML = obj.i.sensor + " " + obj.i.estado;
-				if (obj.i.estado == 1){
+			obj.feeds.forEach((item) => {
+				document.getElementById("jsensor_"+id).innerHTML = item.sensor + " " + item.estado;
+				if (item.estado == 1){
 					document.getElementById("jsensor_"+i).classList.add('btn btn-success');
 					document.getElementById("jsensor_"+i).classList.toggle('btn btn-danger');
 				}
-				else{
+				else if (item.estado == 0){
 					document.getElementById("jsensor_"+i).classList.add('btn btn-danger');
 					document.getElementById("jsensor_"+i).classList.toggle('btn btn-success');
 				}
-			}
+			});
 		}
 		else {
 		html.innerHTML = "<p>error "+req.status + "</p>";
