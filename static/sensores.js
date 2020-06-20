@@ -33,7 +33,7 @@ function loadTable(data) {
 		if (this.readyState == 4)
 			if (this.status == 200) {
 				obj = JSON.parse(xhttp.responseText);
-				var table = "<table><thead><tr>\
+				var table = "<thead><tr>\
 					<th>ID</th>\
 					<th>Sensor</th>\
 					<th>Estado</th>\
