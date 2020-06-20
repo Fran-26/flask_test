@@ -60,7 +60,7 @@ def set(id, estado):
 	
 @app.route("/tabla/<string:id>")
 def tabla(id):
-	query = db.execute("SELECT * FROM SENSORES JOIN REGISTRO ON SENSORES.ID=REGISTRO.ID WHERE ID={id} ORDER BY TIEMPO DESC").format(id=id).fetchall()
+	query = db.execute("SELECT * FROM SENSORES JOIN REGISTRO ON REGISTRO.ID=SENSORES.ID WHERE ID={id} ORDER BY TIEMPO DESC").format(id=id).fetchall()
 	
 	if query is None:
 		return "Error, no existe el sensor numero {}".format(id)
