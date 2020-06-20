@@ -31,10 +31,26 @@ function loadTable(data) {
 	xhttp.open("GET", URL, true);
 	xhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
+			obj = JSON.parse(req.responseText);
+			var table = "<table><thead><tr>\
+				<th>ID</th>\
+				<th>Sensor</th>\
+				<th>Estado</th>\
+				<th>Hora</th>\
+				</tr></thead><tbody>";
+			obj.forEach((item) => {
+				table.append("<tr>\
+				<td>" + obj.id + "</td>\
+				<td>" + obj.sensor + "</td>\
+				<td>" + obj.estado + "</td>\
+				<td>" + obj.tiempo + "</td>\
+				</tr>");
+			});
+			table.append("</tbody>")
 		document.getElementById("html").innerHTML = this.responseText;
 		}
 	else
-		html.innerHTML = "wtf :D"
+		tabla.innerHTML = "wtf :D"
 	};
 	xhttp.send(null);
 }
