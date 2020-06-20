@@ -60,5 +60,12 @@ def set(id, estado):
 	
 @app.route("/tabla/<string:id>")
 def tabla(id):
-	#TODO
-	return "hola :D"
+	query = db.execute("SELECT * FROM SENSORES JOIN REGISTRO ON SENSORES.ID=REGISTRO.ID WHERE ID={id} ORDER BY TIEMPO DESC").format(id=id).fetchall()
+	
+	if query is None:
+		return "Error, no existe el sensor numero {}".format(id)
+		
+	dictionary=[]
+	for id, registro in enumerate(query):
+		dictionary.append({"sensor": registro.sensor, "id": registro.a, "estado" : registro.estado, "tiempo" : registro.tiempo})
+	return jsonify(dictionary)
