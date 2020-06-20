@@ -49,6 +49,7 @@ function loadTable(data) {
 				table = table + ("</tbody>")
 				});
 			document.getElementById("tabla").innerHTML = table;
+			document.getElementById("html").innerHTML = "<buttontype=\"button\" onclick=\"hide_table\">Esconder tabla</button>";
 			}
 			else
 				tabla.innerHTML = "wtf :D"
@@ -77,4 +78,9 @@ function update (){
 			}
 	};
 	req.send(null);
+}
+
+function hide_table () {
+	document.getElementById("tabla").innerHTML = "";
+}
 }
