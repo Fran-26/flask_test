@@ -83,4 +83,3 @@ function update (){
 function hide_table () {
 	document.getElementById("tabla").innerHTML = "";
 }
-}
