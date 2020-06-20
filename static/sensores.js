@@ -48,7 +48,7 @@ function loadTable(data) {
 					</tr>");
 				table = table + ("</tbody>")
 				});
-			document.getElementById("html").innerHTML = table;
+			document.getElementById("tabla").innerHTML = table;
 			}
 			else
 				tabla.innerHTML = "wtf :D"
