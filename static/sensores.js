@@ -39,14 +39,14 @@ function loadTable(data) {
 				<th>Hora</th>\
 				</tr></thead><tbody>";
 			obj.forEach((item) => {
-				table.append("<tr>\
+				table = table + ("<tr>\
 				<td>" + obj.id + "</td>\
 				<td>" + obj.sensor + "</td>\
 				<td>" + obj.estado + "</td>\
 				<td>" + obj.tiempo + "</td>\
 				</tr>");
 			});
-			table.append("</tbody>")
+			table = table + ("</tbody>")
 		document.getElementById("html").innerHTML = this.responseText;
 		}
 	else
