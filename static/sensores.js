@@ -31,7 +31,7 @@ function loadTable(data) {
 	xhttp.open("GET", URL, true);
 	xhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
-			obj = JSON.parse(req.responseText);
+			obj = JSON.parse(xhttp.responseText);
 			var table = "<table><thead><tr>\
 				<th>ID</th>\
 				<th>Sensor</th>\
