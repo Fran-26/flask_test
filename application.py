@@ -50,8 +50,8 @@ def set(id, estado):
 		return "Error, no existe el sensor numero {}".format(id)
 		
 	try:
-		db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, {estado});".format(id=id, estado=estado))
-		db.execute("UPDATE ESTADO SET ESTADO={estado} WHERE ID={id};".format(id=id, estado=estado))
+		db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, '{estado}');".format(id=id, estado=estado))
+		db.execute("UPDATE ESTADO SET ESTADO='{estado}' WHERE ID={id};".format(id=id, estado=estado))
 		db.commit()
 	except:
 		return "Algo salio mal"
