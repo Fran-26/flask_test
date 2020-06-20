@@ -48,9 +48,9 @@ function update (){
 			obj.forEach((item) => {
 				var id="s"+item.id.toString();
 				document.getElementById(id).innerHTML = item.sensor + " " + item.estado;
-				if (item.estado == 1)
+				if (item.estado == 'cerrado')
 					document.getElementById(id).className = "btn btn-success";
-				else if (item.estado == 0)
+				else if (item.estado == 'abierto')
 					document.getElementById(id).className = "btn btn-danger";
 			});
 		}
