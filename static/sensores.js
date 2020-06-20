@@ -40,13 +40,13 @@ function loadTable(data) {
 				</tr></thead><tbody>";
 			obj.forEach((item) => {
 				table = table + ("<tr>\
-				<td>" + obj.id + "</td>\
-				<td>" + obj.sensor + "</td>\
-				<td>" + obj.estado + "</td>\
-				<td>" + obj.tiempo + "</td>\
+				<td>" + item.id + "</td>\
+				<td>" + item.sensor + "</td>\
+				<td>" + item.estado + "</td>\
+				<td>" + item.tiempo + "</td>\
 				</tr>");
-			});
 			table = table + ("</tbody>")
+			});
 		document.getElementById("html").innerHTML = this.responseText;
 		}
 	else
