@@ -30,27 +30,28 @@ function loadTable(data) {
 	var xhttp = new XMLHttpRequest();
 	xhttp.open("GET", URL, true);
 	xhttp.onreadystatechange = function() {
-	if (this.readyState == 4 && this.status == 200) {
-			obj = JSON.parse(xhttp.responseText);
-			var table = "<table><thead><tr>\
-				<th>ID</th>\
-				<th>Sensor</th>\
-				<th>Estado</th>\
-				<th>Hora</th>\
-				</tr></thead><tbody>";
-			obj.forEach((item) => {
-				table = table + ("<tr>\
-				<td>" + item.id + "</td>\
-				<td>" + item.sensor + "</td>\
-				<td>" + item.estado + "</td>\
-				<td>" + item.tiempo + "</td>\
-				</tr>");
-			table = table + ("</tbody>")
-			});
-		document.getElementById("html").innerHTML = this.responseText;
-		}
-	else
-		tabla.innerHTML = "wtf :D"
+		if (this.readyState == 4)
+			if (this.status == 200) {
+				obj = JSON.parse(xhttp.responseText);
+				var table = "<table><thead><tr>\
+					<th>ID</th>\
+					<th>Sensor</th>\
+					<th>Estado</th>\
+					<th>Hora</th>\
+					</tr></thead><tbody>";
+				obj.forEach((item) => {
+					table = table + ("<tr>\
+					<td>" + item.id + "</td>\
+					<td>" + item.sensor + "</td>\
+					<td>" + item.estado + "</td>\
+					<td>" + item.tiempo + "</td>\
+					</tr>");
+				table = table + ("</tbody>")
+				});
+			document.getElementById("html").innerHTML = table;
+			}
+			else
+				tabla.innerHTML = "wtf :D"
 	};
 	xhttp.send(null);
 }
@@ -59,20 +60,21 @@ function update (){
 	var req = new XMLHttpRequest();
 	req.open('GET', '/valores', true);
 	req.onreadystatechange = function () {
-		if (req.readyState == 4 && req.status == 200) {
-			obj = JSON.parse(req.responseText);
-			obj.forEach((item) => {
-				var id="s"+item.id.toString();
-				document.getElementById(id).innerHTML = item.sensor + "<:br>" + item.estado;
-				if (item.estado == 'cerrado')
-					document.getElementById(id).className = "btn btn-success";
-				else if (item.estado == 'abierto')
-					document.getElementById(id).className = "btn btn-danger";
-			});
-		}
-		else {
-		html.innerHTML = "<p>error "+req.status + "</p>";
-		}
+		if (req.readyState == 4)
+			if (req.status == 200) {
+				obj = JSON.parse(req.responseText);
+				obj.forEach((item) => {
+					var id="s"+item.id.toString();
+					document.getElementById(id).innerHTML = item.sensor + "<:br>" + item.estado;
+					if (item.estado == 'cerrado')
+						document.getElementById(id).className = "btn btn-success";
+					else if (item.estado == 'abierto')
+						document.getElementById(id).className = "btn btn-danger";
+				});
+			}
+			else {
+			html.innerHTML = "<p>error "+req.status + "</p>";
+			}
 	};
 	req.send(null);
 }
