@@ -41,14 +41,22 @@ def valores():
 		dictionary.append({"id": id, "sensor": registro.sensor, "estado" : registro.estado })
 	return jsonify(dictionary)
 
+@app.route("/valoresArduino")
+def valores():
+	valores = db.execute("SELECT * FROM ESTADO").fetchall()
+	dictionary=""
+	for registro in valores:
+		dictionary+ = "{id},{estado},\n".format(id = valores.id, estado = registro.estado)
+	return jsonify(dictionary)
+
 #TO DO:convertir a POST
 @app.route("/set/<string:id>/<string:estado>")
 def set(id, estado):
 	query=db.execute("SELECT * FROM SENSORES WHERE ID= {}".format(id)).fetchone()
-	
+
 	if query is None:
 		return "Error, no existe el sensor numero {}".format(id)
-		
+
 	try:
 		db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, '{estado}');".format(id=id, estado=estado))
 		db.execute("UPDATE ESTADO SET ESTADO='{estado}' WHERE ID={id};".format(id=id, estado=estado))
@@ -57,14 +65,14 @@ def set(id, estado):
 		return "Algo salio mal"
 	x="{id} guardado {estado}".format(id=id, estado=estado)
 	return (x)
-	
+
 @app.route("/tabla/<string:id>")
 def tabla(id):
 	query = db.execute("SELECT * FROM SENSORES JOIN REGISTRO ON REGISTRO.ID=SENSORES.ID WHERE SENSORES.ID={id} ORDER BY TIEMPO DESC".format(id=id)).fetchall()
-	
+
 	if query is None:
 		return "Error, no existe el sensor numero {}".format(id)
-		
+
 	dictionary=[]
 	for id, registro in enumerate(query):
 		dictionary.append({"sensor": registro.sensor, "id": registro.a, "estado" : registro.estado, "tiempo" : registro.tiempo})
