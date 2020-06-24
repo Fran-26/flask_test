@@ -42,12 +42,12 @@ def valores():
 	return jsonify(dictionary)
 
 @app.route("/valoresArduino")
-def valores():
+def valoresArduino():
 	valores = db.execute("SELECT * FROM ESTADO").fetchall()
 	dictionary=""
 	for registro in valores:
 		dictionary += "{id},{estado},\n".format(id = valores.id, estado = registro.estado)
-	return jsonify(dictionary)
+	return (dictionary)
 
 #TO DO:convertir a POST
 @app.route("/set/<string:id>/<string:estado>")
