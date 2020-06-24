@@ -46,7 +46,7 @@ def valores():
 	valores = db.execute("SELECT * FROM ESTADO").fetchall()
 	dictionary=""
 	for registro in valores:
-		dictionary+ = "{id},{estado},\n".format(id = valores.id, estado = registro.estado)
+		dictionary += "{id},{estado},\n".format(id = valores.id, estado = registro.estado)
 	return jsonify(dictionary)
 
 #TO DO:convertir a POST
