@@ -46,7 +46,7 @@ def valoresArduino():
 	valores = db.execute("SELECT * FROM ESTADO").fetchall()
 	dictionary=""
 	for registro in valores:
-		dictionary += "{id}:{estado}#".format(id = registro.id, estado = registro.estado)
+		dictionary += "#{id}:{estado};".format(id = registro.id, estado = registro.estado)
 	return (dictionary)
 
 #TO DO:convertir a POST
