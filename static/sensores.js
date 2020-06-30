@@ -1,30 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 	setInterval (update, 3000)
 });
-/*
-function update (){
-	var req = new XMLHttpRequest();
-	req.open('GET', '/valores', true);
-	req.onreadystatechange = function () {
-	if (req.readyState == 4)
-		if  (req.status == 200) {
-			obj = JSON.parse(req.responseText);
-			jsensor_1.innerHTML = "Puerta Principal: " + obj.puerta_1;
-			jsensor_2.innerHTML = "Ventana Sala: " + obj.sala_1;
-			jsensor_3.innerHTML = "Ventana Atras: " + obj.ventana_1;
-			humedad_sala = "0";
-			humedad_cuarto = "0";
-			jsensor_4.innerHTML = "Temperatura de la Sala: " + "0" + "°/ " + humedad_sala;
-			jsensor_5.innerHTML = "Temperatura del Cuarto: " + "0" + "°/ " + humedad_cuarto;
-		}
-		else {
-	  	html.innerHTML = "<p>error "+req.status + "</p>";
- 		}
-	};
-	req.send(null);
 
-}
-*/
+var alarma;
+
 function loadTable(data) {
 	URL = '/tabla/' + data
 	var xhttp = new XMLHttpRequest();
@@ -72,6 +51,18 @@ function update (){
 						document.getElementById(id).className = "btn btn-success";
 					else if (item.estado == 'abierto')
 						document.getElementById(id).className = "btn btn-danger";
+					if (item.estado == 'desactivado')
+					{
+						document.getElementById(id).className = "btn btn-outline-success";
+						document.getElementById(id).innerHTML = "Bloquear Alarma <i class=\"fas fa-lock\"></i>";
+						alarma = false;
+					}
+					if (item.estado == 'activado')
+					{
+						document.getElementById(id).className = "btn btn-outline-danger";
+						document.getElementById(id).innerHTML = "Desbloquear Alarma <i class=\"fas fa-lock-open\"></i>";
+						alarma = true;
+					}
 				});
 			}
 			else {
@@ -83,4 +74,20 @@ function update (){
 
 function hide_table () {
 	document.getElementById("tabla").innerHTML = "";
+}
+
+function activar (){
+	var req = new XMLHttpRequest();
+	if (alarma)
+		req.open('GET', '/set/6/desactivado', true);
+	else
+		req.open('GET', '/set/6/activado', true);
+	req.onreadystatechange = function () {
+		//if (req.readyState == 4)
+			//if (req.status == 200) {
+			//obj = JSON.parse(this.responseText);
+			//TO DO
+		}
+	};
+	req.send(null);
 }
