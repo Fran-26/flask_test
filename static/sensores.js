@@ -46,7 +46,7 @@ function update (){
 				obj = JSON.parse(req.responseText);
 				obj.forEach((item) => {
 					var id="s"+item.id.toString();
-					if (id != 5) {
+					if (id != "s5") {
 						document.getElementById(id).innerHTML = item.sensor + "<br>" + item.estado;
 						if (item.estado == 'cerrado')
 							document.getElementById(id).className = "btn btn-success";
