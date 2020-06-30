@@ -53,7 +53,7 @@ function loadTable(data) {
 			}
 			else
 				tabla.innerHTML = "wtf :D"
-			$("#tabla").slideDown("slow");
+			//$("#tabla").slideDown("slow");
 	};
 	xhttp.send(null);
 }
