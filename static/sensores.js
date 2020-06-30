@@ -87,7 +87,7 @@ function activar (){
 			//if (req.status == 200) {
 			//obj = JSON.parse(this.responseText);
 			//TO DO
-		}
+		//}
 	};
 	req.send(null);
 }
