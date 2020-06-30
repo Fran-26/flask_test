@@ -31,3 +31,8 @@
 #tabla {
 	/*display: none;*/
 }
+
+#alarma{
+	position: absolute;
+	right: 0px;
+}
