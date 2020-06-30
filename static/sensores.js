@@ -57,7 +57,7 @@ function update (){
 						document.getElementById(id).innerHTML = "Bloquear Alarma <i class=\"fas fa-lock\"></i>";
 						alarma = false;
 					}
-					if (item.estado == 'activado')
+					else if (item.estado == 'activado')
 					{
 						document.getElementById(id).className = "btn btn-outline-danger";
 						document.getElementById(id).innerHTML = "Desbloquear Alarma <i class=\"fas fa-lock-open\"></i>";
