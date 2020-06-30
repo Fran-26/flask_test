@@ -48,9 +48,9 @@ function update (){
 					var id="s"+item.id.toString();
 					if (id != "s5") {
 						document.getElementById(id).innerHTML = item.sensor + "<br>" + item.estado;
-						if (item.estado == 'cerrado')
+						if (item.estado == 'cerrado' || item.estado == 'desactivado')
 							document.getElementById(id).className = "btn btn-success";
-						else if (item.estado == 'abierto')
+						else if (item.estado == 'abierto' || item.estado == 'activado')
 							document.getElementById(id).className = "btn btn-danger";
 					}
 					else {
