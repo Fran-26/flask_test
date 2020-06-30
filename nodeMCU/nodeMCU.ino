@@ -8,7 +8,7 @@ const String password = "Huawei01";
 
 int sensores[3] = {D5, D6, D7};
 int id[3] = {1, 2, 3};
-boolean estado[3];
+bool estado[3];
 
 DHTesp sensor_temperatura;
 int temperatura, humedad;
@@ -23,6 +23,9 @@ int port = 5000;
 
 WiFiClient wifi;
 HttpClient client = HttpClient(wifi, serverAddress, port);
+
+//String serverAddress = "http://myhouse26.ddns.net";
+//HttpClient client = HttpClient(wifi, serverAddress);
 
 void setup()
 {
@@ -41,17 +44,30 @@ void setup()
 	Serial.print("\n Conectado a: ");
 	Serial.println(WiFi.localIP());
 
-	client.get("/valores");
+	client.get("/valoresArduino");
+	String valores = client.responseBody();
 
-	int statusCode = client.responseStatusCode();
-	String response = client.responseBody();
+	int i = valores.indexOf("#"); //0
+	while (i != -1)
+	{
+		int j = valores.indexOf(":", i + 1); //13
+		int k = valores.indexOf(";", i + 1); //20
 
-	Serial.print("Status code: ");
-	Serial.println(statusCode);
-	Serial.print("Response: ");
-	Serial.println(response);
-	Serial.print("\n\n\n\n\n\n\n");
+		int ID = valores.substring(i + 1, j).toInt();
+		String Estado = valores.substring(j + 1, k);
 
+		for (int a = 0; a < 6; a++)
+		{
+			if (id[a] == ID)
+			{
+				if (Estado == "cerrado")
+					estado[a] = true;
+				else if (Estado == "abierto")
+					estado[a] = false;
+			}
+		}
+		i = valores.indexOf("#", i + 1); //-1
+	}
 }
 
 void loop()
@@ -83,12 +99,7 @@ void loop()
 			int statusCode = client.responseStatusCode();
 			String response = client.responseBody();
 
-			Serial.print("Status code: ");
-			Serial.println(statusCode);
-			Serial.print("Response: ");
 			Serial.println(response);
-
-			delay(1000);
 		}
 	}
 }
