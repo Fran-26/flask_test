@@ -46,22 +46,26 @@ function update (){
 				obj = JSON.parse(req.responseText);
 				obj.forEach((item) => {
 					var id="s"+item.id.toString();
-					document.getElementById(id).innerHTML = item.sensor + "<br>" + item.estado;
-					if (item.estado == 'cerrado')
-						document.getElementById(id).className = "btn btn-success";
-					else if (item.estado == 'abierto')
-						document.getElementById(id).className = "btn btn-danger";
-					if (item.estado == 'desactivado')
-					{
-						document.getElementById(id).className = "btn btn-outline-success";
-						document.getElementById(id).innerHTML = "Bloquear Alarma <i class=\"fas fa-lock\"></i>";
-						alarma = false;
+					if (id != 5) {
+						document.getElementById(id).innerHTML = item.sensor + "<br>" + item.estado;
+						if (item.estado == 'cerrado')
+							document.getElementById(id).className = "btn btn-success";
+						else if (item.estado == 'abierto')
+							document.getElementById(id).className = "btn btn-danger";
 					}
-					else if (item.estado == 'activado')
-					{
-						document.getElementById(id).className = "btn btn-outline-danger";
-						document.getElementById(id).innerHTML = "Desbloquear Alarma <i class=\"fas fa-lock-open\"></i>";
-						alarma = true;
+					else {
+						if (item.estado == 'desactivado')
+						{
+							document.getElementById(id).className = "btn btn-outline-success";
+							document.getElementById(id).innerHTML = "Bloquear Alarma <i class=\"fas fa-lock\"></i>";
+							alarma = false;
+						}
+						else if (item.estado == 'activado')
+						{
+							document.getElementById(id).className = "btn btn-outline-danger";
+							document.getElementById(id).innerHTML = "Desbloquear Alarma <i class=\"fas fa-lock-open\"></i>";
+							alarma = true;
+						}
 					}
 				});
 			}
