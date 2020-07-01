@@ -89,7 +89,7 @@ def estadoLuces():
 		dictionary.append({"id": id, "sensor": registro.sensor, "estado" : registro.estado })
 	return jsonify(dictionary)
 
-@app.route("estadoLucesArduino")
+@app.route("/estadoLucesArduino")
 def estadoLucesArduino():
 	valores = db.execute("SELECT ESTADO.ID, ESTADO.ESTADO FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID WHERE NOT SENSORES.TIPO='luz'").fetchall()
 	dictionary=[]
