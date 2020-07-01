@@ -16,13 +16,13 @@
 				background-image: url('{{url_for('static', filename='background.png')}}');
 	  		background-attachment: inherit;
 				background-size: cover;
+				min-height: 500px;
 			}
 			#header {
 				background-image: url('{{url_for('static', filename='header.png')}}');
 		  	background-repeat: no-repeat;
 				background-attachment: fixed;
 				background-size: contain;
-				min-height: 500px;
 			}
 			{% block style %}{% endblock  %}
 		</style>
