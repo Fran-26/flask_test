@@ -57,7 +57,7 @@ def set(id, estado):
 	if query is None:
 		return "Error, no existe el sensor numero {}".format(id)
 
-	if id = 6:
+	if id == 6:
 		#TODO
 
 	try:
