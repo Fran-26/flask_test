@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Veintiseismatic</title>
-		
+
 		<!-- bootstrap libraries-->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,14 +14,15 @@
 		<style>
 			#cuerpo {
 				background-image: url('{{url_for('static', filename='background.png')}}');
-			  	background-attachment: inherit;
-  				background-size: cover;
+	  		background-attachment: inherit;
+				background-size: cover;
 			}
 			#header {
 				background-image: url('{{url_for('static', filename='header.png')}}');
-			  	background-repeat: no-repeat;
-  				background-attachment: fixed;
-  				background-size: contain;
+		  	background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-size: contain;
+				min-height: 500px;
 			}
 			{% block style %}{% endblock  %}
 		</style>
@@ -29,7 +30,7 @@
 	<body>
 		<div id=header class="jumbotron text-center">
 			<h1>{% block heading  %}{% endblock  %}</h1>
-			<p>Sistema de automatizacion para mi casa</p> 
+			<p>Sistema de automatizacion para mi casa</p>
 		</div>
 		<div id=cuerpo class="container">
 			{% block body %}
