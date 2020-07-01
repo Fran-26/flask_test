@@ -38,7 +38,7 @@ def valores():
 	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID WHERE NOT SENSORES.TIPO='luz'").fetchall()
 	dictionary=[]
 	for id, registro in enumerate(valores):
-		dictionary.append({"id": id, "sensor": registro.sensor, "estado" : registro.estado })
+		dictionary.append({"id": registro.id, "sensor": registro.sensor, "estado" : registro.estado })
 	return jsonify(dictionary)
 
 @app.route("/valoresArduino")
@@ -86,13 +86,13 @@ def estadoLuces():
 	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID WHERE SENSORES.TIPO='luz'").fetchall()
 	dictionary=[]
 	for id, registro in enumerate(valores):
-		dictionary.append({"id": id, "sensor": registro.sensor, "estado" : registro.estado })
+		dictionary.append({"id": registro.id, "sensor": registro.sensor, "estado" : registro.estado })
 	return jsonify(dictionary)
 
 @app.route("/estadoLucesArduino")
 def estadoLucesArduino():
-	valores = db.execute("SELECT ESTADO.ID, ESTADO.ESTADO FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID WHERE NOT SENSORES.TIPO='luz'").fetchall()
-	dictionary=[]
-	for id, registro in enumerate(valores):
-		dictionary.append({"id": id, "sensor": registro.sensor, "estado" : registro.estado })
-	return jsonify(dictionary)
+	valores = db.execute("SELECT ESTADO.ID, ESTADO.ESTADO FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID WHERE SENSORES.TIPO='luz'").fetchall()
+	dictionary=""
+	for registro in valores:
+		dictionary += "#{id}:{estado};".format(id = registro.id, estado = registro.estado)
+	return (dictionary)
