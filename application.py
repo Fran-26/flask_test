@@ -81,16 +81,16 @@ def tabla(id):
 		dictionary.append({"sensor": registro.sensor, "id": registro.a, "estado" : registro.estado, "tiempo" : registro.tiempo})
 	return jsonify(dictionary)
 
-@app.route("luces")
-def luces():
+@app.route("/estadoLuces")
+def estadoLuces():
 	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID WHERE SENSORES.TIPO='luz'").fetchall()
 	dictionary=[]
 	for id, registro in enumerate(valores):
 		dictionary.append({"id": id, "sensor": registro.sensor, "estado" : registro.estado })
 	return jsonify(dictionary)
 
-@app.route("lucesArduino")
-def lucesArduino():
+@app.route("estadoLucesArduino")
+def estadoLucesArduino():
 	valores = db.execute("SELECT ESTADO.ID, ESTADO.ESTADO FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID WHERE NOT SENSORES.TIPO='luz'").fetchall()
 	dictionary=[]
 	for id, registro in enumerate(valores):
