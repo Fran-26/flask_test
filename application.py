@@ -35,7 +35,7 @@ def luces():
 
 @app.route("/valores")
 def valores():
-	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID").fetchall()
+	valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID WHERE NOT SENSORES.TIPO='luz'").fetchall()
 	dictionary=[]
 	for id, registro in enumerate(valores):
 		dictionary.append({"id": id, "sensor": registro.sensor, "estado" : registro.estado })
@@ -43,7 +43,7 @@ def valores():
 
 @app.route("/valoresArduino")
 def valoresArduino():
-	valores = db.execute("SELECT * FROM ESTADO").fetchall()
+	valores = db.execute("SELECT ESTADO.ID, ESTADO.ESTADO FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID WHERE SENSORES.TIPO='magnetico' OR SENSORES.TIPO='pir'").fetchall()
 	dictionary=""
 	for registro in valores:
 		dictionary += "#{id}:{estado};".format(id = registro.id, estado = registro.estado)
@@ -56,6 +56,9 @@ def set(id, estado):
 
 	if query is None:
 		return "Error, no existe el sensor numero {}".format(id)
+
+	if id = 6:
+		#TODO
 
 	try:
 		db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, '{estado}');".format(id=id, estado=estado))
