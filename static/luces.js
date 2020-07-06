@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	setInterval (update, 3000)
 });
 
-var estadoLuz = new Array(10);
+var estadoLuz = new Array();
 
 function loadTable(data) {
 	URL = '/tabla/' + data
@@ -55,12 +55,12 @@ function update (){
 					if (item.estado == 'encendido')
 					{
 						document.getElementById(id).className = "btn btn-light";
-						estadoLuz[id]=true;
+						estadoLuz[item.id]=true;
 					}
 					else if (item.estado == 'apagado')
 					{
 						document.getElementById(id).className = "btn btn-dark";
-						estadoLuz[id]=false;
+						estadoLuz[item.id]=false;
 					}
 				});
 			}
