@@ -45,7 +45,7 @@ function update (){
 			if (req.status == 200) {
 				obj = JSON.parse(req.responseText);
 				obj.forEach((item) => {
-					var id="s"+item.id.toString();
+					var id="l"+item.id.toString();
 					document.getElementById(id).innerHTML = item.sensor + "<br>" + item.estado;
 					if (item.estado == 'encendido')
 						document.getElementById(id).className = "btn btn-success";
