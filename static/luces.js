@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	setInterval (update, 3000)
 });
 
-var estado = new array();
+var estado = new Array();
 
 function loadTable(data) {
 	URL = '/tabla/' + data
