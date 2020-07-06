@@ -6,11 +6,11 @@
 }
 #luz_1 {
 	bottom: 25%;
-	right: 5%;
+	left: 22%;
 }
 #luz_2 {
-	bottom: 20%;
-	right: 15%;
+	top: 33%;
+	left: 33%;
 }
 #cuerpo {
 	position: relative;
