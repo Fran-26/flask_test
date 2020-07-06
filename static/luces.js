@@ -39,7 +39,7 @@ function loadTable(data) {
 
 function update (){
 	var req = new XMLHttpRequest();
-	req.open('GET', '/valores', true);
+	req.open('GET', '/estadoLuces', true);
 	req.onreadystatechange = function () {
 		if (req.readyState == 4)
 			if (req.status == 200) {
