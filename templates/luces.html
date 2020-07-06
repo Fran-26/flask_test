@@ -11,7 +11,8 @@
 
 {% block body  %}
 	<a href="{{ url_for('index') }}">Volver a Inicio</a>
-	<img src="{{url_for('static', filename='home.png')}}" width="100%" height="auto">
+	<br>
+	<img src="{{url_for('static', filename='home.png')}}">
 	<div class="topleft" id = "luz_1"><button type="button" onclick="turn(8)" id = "l8" >Luz 1</button></div>
 	<div class="topleft" id = "luz_2"><button type="button" onclick="turn(9)" id = "l9" >Luz 2</button></div>
 	<div class="topleft" id = "html"></div>
