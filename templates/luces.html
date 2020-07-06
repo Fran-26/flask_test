@@ -6,18 +6,12 @@
 	<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script-->
 {% endblock  %}
 
-{% block style %}
-	#casa{
-		background-image: url('{{url_for('static', filename='home.png')}}');
-	}
-{% endblock  %}
-
 {% block heading %} Luces {% endblock %}
 
 
 {% block body  %}
 	<a href="{{ url_for('index') }}">Volver a Inicio</a>
-	<img src="{{url_for('static', filename='plano.png')}}" width="100%" height="auto">
+	<img src="{{url_for('static', filename='home.png')}}" width="100%" height="auto">
 	<div class="topleft" id = "luz_1"><button type="button" onclick="loadTable(1)" id = "s8" >Luz 1</button></div>
 	<div class="topleft" id = "luz_2"><button type="button" onclick="loadTable(2)" id = "s9" >Luz 2</button></div>
 	<div class="topleft" id = "html"></div>
