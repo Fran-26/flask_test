@@ -54,12 +54,12 @@ function update (){
 					document.getElementById(id).innerHTML = item.sensor + "<br>" + item.estado;
 					if (item.estado == 'encendido')
 					{
-						document.getElementById(id).className = "btn btn-success";
+						document.getElementById(id).className = "btn btn-light";
 						estado[id]=true;
 					}
 					else if (item.estado == 'apagado')
 					{
-						document.getElementById(id).className = "btn btn-danger";
+						document.getElementById(id).className = "btn btn-dark";
 						estado[id]=false;
 					}
 				});
