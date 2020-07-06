@@ -28,7 +28,7 @@ function loadTable(data) {
 				table = table + ("</tbody>")
 				});
 			document.getElementById("tabla").innerHTML = table;
-			document.getElementById("html").innerHTML = "<button type=\"button\" onclick=\"hide_table\">Esconder tabla</button>";
+			document.getElementById("html").innerHTML = "<button type=\"button\" onclick=\"hide_table() \">Esconder tabla</button>";
 			}
 			else
 				tabla.innerHTML = "wtf :D"
