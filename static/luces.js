@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	setInterval (update, 3000)
 });
 
-var alarma;
+var estado = new array();
 
 function loadTable(data) {
 	URL = '/tabla/' + data
@@ -37,6 +37,11 @@ function loadTable(data) {
 	xhttp.send(null);
 }
 
+function hide_table () {
+	document.getElementById("tabla").innerHTML = "";
+	document.getElementById("html").innerHTML = "";
+}
+
 function update (){
 	var req = new XMLHttpRequest();
 	req.open('GET', '/estadoLuces', true);
@@ -49,8 +54,10 @@ function update (){
 					document.getElementById(id).innerHTML = item.sensor + "<br>" + item.estado;
 					if (item.estado == 'encendido')
 						document.getElementById(id).className = "btn btn-success";
+						estado[id]=true;
 					else if (item.estado == 'apagado')
 						document.getElementById(id).className = "btn btn-danger";
+						estado[id]=false;
 				});
 			}
 			else {
@@ -60,6 +67,13 @@ function update (){
 	req.send(null);
 }
 
-function hide_table () {
-	document.getElementById("tabla").innerHTML = "";
+function turn (id) {
+	if (estado[id])
+		URL = '/set/' + id + '/apagado'
+	else
+		URL = '/set/' + id + '/encendido'
+	var req = new XMLHttpRequest();
+	req.open('GET', URL, true);
+	req.onreadystatechange = function () { };
+	req.send(null);
 }

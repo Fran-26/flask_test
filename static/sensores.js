@@ -37,6 +37,11 @@ function loadTable(data) {
 	xhttp.send(null);
 }
 
+function hide_table () {
+	document.getElementById("tabla").innerHTML = "";
+	document.getElementById("html").innerHTML = "";
+}
+
 function update (){
 	var req = new XMLHttpRequest();
 	req.open('GET', '/valores', true);
@@ -74,10 +79,6 @@ function update (){
 			}
 	};
 	req.send(null);
-}
-
-function hide_table () {
-	document.getElementById("tabla").innerHTML = "";
 }
 
 function activar (){
