@@ -53,11 +53,15 @@ function update (){
 					var id="l"+item.id.toString();
 					document.getElementById(id).innerHTML = item.sensor + "<br>" + item.estado;
 					if (item.estado == 'encendido')
+					{
 						document.getElementById(id).className = "btn btn-success";
 						estado[id]=true;
+					}
 					else if (item.estado == 'apagado')
+					{
 						document.getElementById(id).className = "btn btn-danger";
 						estado[id]=false;
+					}
 				});
 			}
 			else {
