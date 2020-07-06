@@ -78,6 +78,9 @@ function turn (id) {
 		URL = '/set/' + id + '/encendido'
 	var req = new XMLHttpRequest();
 	req.open('GET', URL, true);
-	req.onreadystatechange = function () { };
+	req.onreadystatechange = function () {
+		if (req.readyState == 4 && req.status == 200)
+				update();
+	};
 	req.send(null);
 }
