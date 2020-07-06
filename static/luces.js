@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	setInterval (update, 3000)
 });
 
-var estado = new Array(10);
+var estadoLuz = new Array(10);
 
 function loadTable(data) {
 	URL = '/tabla/' + data
@@ -55,12 +55,12 @@ function update (){
 					if (item.estado == 'encendido')
 					{
 						document.getElementById(id).className = "btn btn-light";
-						estado[id]=true;
+						estadoLuz[id]=true;
 					}
 					else if (item.estado == 'apagado')
 					{
 						document.getElementById(id).className = "btn btn-dark";
-						estado[id]=false;
+						estadoLuz[id]=false;
 					}
 				});
 			}
@@ -72,7 +72,7 @@ function update (){
 }
 
 function turn (id) {
-	if (estado[id])
+	if (estadoLuz[id])
 		URL = '/set/' + id + '/apagado'
 	else
 		URL = '/set/' + id + '/encendido'
