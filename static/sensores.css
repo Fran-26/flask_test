@@ -5,24 +5,24 @@
 	font-size: 18px;
 }
 #sensor_1 {
-	bottom: 25%;
-	right: 5%;
+	top: 40%;
+	left: 12%;
 }
 #sensor_2 {
-	bottom: 20%;
-	right: 15%;
+	bottom: 26%;
+	left: 7%;
 }
 #sensor_3 {
-	top: 20%;
-	left: 5%;
+	top: 30%;
+	left: 20%;
 }
 #sensor_4 {
-	top: 45%;
-	left: 50%;
+	top: 64%;
+	left: 30%;
 }
 #sensor_5 {
-	top: 35%;
-	left: 20%;
+	top: 10%;
+	left: 15%;
 	color: white;
 }
 #cuerpo {
