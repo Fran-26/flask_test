@@ -1,0 +1,55 @@
+.topleft {
+	position: absolute;
+	text-align: center;
+	width: 150px;
+	font-size: 18px;
+}
+#sensor_1 {
+	top: 40%;
+	left: 12%;
+}
+#sensor_2 {
+	bottom: 26%;
+	left: 7%;
+}
+#sensor_3 {
+	top: 30%;
+	left: 20%;
+}
+#sensor_4 {
+	top: 64%;
+	left: 30%;
+}
+#sensor_5 {
+	top: 10%;
+	left: 15%;
+	color: white;
+}
+#luz_1 {
+	bottom: 25%;
+	left: 22%;
+}
+#luz_2 {
+	top: 33%;
+	left: 33%;
+}
+#cuerpo {
+	position: relative;
+}
+#tabla {
+	/*display: none;*/
+}
+
+#alarma{
+	position: absolute;
+	right: 0px;
+}
+
+#s7{
+	right: 30px;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
