@@ -5,19 +5,21 @@
 #include "DHTesp.h"
 
 #define cantidad 3
-#define cantidad2 2
+#define cantidad2 3
 
 const String ssid = "Pelota";
 const String password = "Huawei01";
 
 ESP8266WebServer server(80);
 
-int sensores[cantidad] = {D5, D6, D7};
+int sensores[cantidad] = {D0, D1, D2};
 int id[cantidad] = {1, 2, 3};
 bool estado[cantidad];
 
-int reles[cantidad2] = {D3, D4};
-int id2[cantidad2] = {8, 9};
+int pulsadores[cantidad2] = {D3, D4, D5};
+bool presionado[cantidad2];
+int reles[cantidad2] = {D6, D7, D8};
+int id2[cantidad2] = {8, 9, 10};
 bool estado2[cantidad2];
 
 DHTesp sensor_temperatura;
@@ -38,47 +40,40 @@ HttpClient client = HttpClient(wifi, serverAddress, port);
 //HttpClient client = HttpClient(wifi, serverAddress);
 
 void handleRoot() {
-	if (server.argName(0) == "estado")
+	for (int i = 0; i<cantidad2; i++)
 	{
-		estado2[0]= !estado2[0];
-		digitalWrite(reles[0],estado2[0]);
-		String url = "set/" + String(id2[0]);
-		if (estado2[0])
-			url += "/apagado";
-		else
-			url += "/encendido";
+		if (server.argName(0) == String("estado" + String(i)))
+		{
+			estado2[i]= !estado2[i];
+			digitalWrite(reles[i],estado2[i]);
+			String url = "set/" + String(id2[i]);
+			if (estado2[i])
+				url += "/encendido";
+			else
+				url += "/apagado";
 
-		client.get(url);
+			client.get(url);
 
-		int statusCode = client.responseStatusCode();
-		String response = client.responseBody();
-	}
-	if (server.argName(0) == "estado2")
-	{
-		estado2[1]= !estado2[1];
-		digitalWrite(reles[1],estado2[1]);
-		String url = "set/" + String(id2[1]);
-		if (estado2[1])
-			url += "/apagado";
-		else
-			url += "/encendido";
-
-		client.get(url);
-
-		int statusCode = client.responseStatusCode();
-		String response = client.responseBody();
+			int statusCode = client.responseStatusCode();
+			String response = client.responseBody();
+		}
 	}
 	
 	String html = "<html><head><title>Control De Salidas Programable</title>"
 		"<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css\">"
 		"<style>\div {margin:auto; text-align:center; font-size:200%;}</style>"
 		"</head><body><div><h3>Estado de Salida 1:&nbsp;";
-		if (!digitalRead(reles[0]))
-			html += "<form><button type=\"submit\" name=\"estado\" class=\"btn btn-success\" >Encendido</button></h3></form>";
+		if (digitalRead(reles[0]))
+			html += "<form><button type=\"submit\" name=\"estado0\" class=\"btn btn-success\" >Encendido</button></h3></form>";
 		else
-			html += "<form><button type=\"submit\" name=\"estado\" class=\"btn btn-dark\" > Apagado </button></h3></form>";
+			html += "<form><button type=\"submit\" name=\"estado0\" class=\"btn btn-dark\" > Apagado </button></h3></form>";
 		html += "<br><h3>Estado de Salida 2:&nbsp;";
-		if (!digitalRead(reles[1]))
+		if (digitalRead(reles[1]))
+			html += "<form><button type=\"submit\" name=\"estado1\" class=\"btn btn-success\" >Encendido</button></h3></form>";
+		else
+			html += "<form><button type=\"submit\" name=\"estado1\" class=\"btn btn-dark\" > Apagado </button></h3></form>";
+		html += "<br><h3>Estado de Salida 3:&nbsp;";
+		if (digitalRead(reles[2]))
 			html += "<form><button type=\"submit\" name=\"estado2\" class=\"btn btn-success\" >Encendido</button></h3></form>";
 		else
 			html += "<form><button type=\"submit\" name=\"estado2\" class=\"btn btn-dark\" > Apagado </button></h3></form>";
@@ -95,17 +90,19 @@ void setup()
 	}
 	for (int i = 0; i < cantidad2; i++)
 	{
+		pinMode (pulsadores[i], INPUT_PULLUP);
 		pinMode (reles[i], OUTPUT);
+		//digitalWrite(reles[i], HIGH);
 	}
 	//sensor_temperatura.setup(D3, DHTesp::DHT11);
 
-	Serial.begin(115200);
+	//Serial.begin(115200);
 	WiFi.begin(ssid, password);
 	while (WiFi.status() !=WL_CONNECTED) {
 		delay(500);
 	}
-	Serial.print("\n Conectado a: ");
-	Serial.println(WiFi.localIP());
+	//Serial.print("\n Conectado a: ");
+	//Serial.println(WiFi.localIP());
 
 	client.get("/valoresArduino");
 	String valores = client.responseBody();
@@ -161,18 +158,17 @@ void loop()
 				if (id2[a] == ID)
 				{
 					if (Estado == "apagado")
-						estado2[a] = true;
-					else if (Estado == "encendido")
 						estado2[a] = false;
+					else if (Estado == "encendido")
+						estado2[a] = true;
 					digitalWrite (reles[a], estado2[a]);
-					//Serial.println(String(id2[a]) + "-->" + String(sensores[a]) + ":" + String(estado2[a]));
 				}
 			}	
 			i = valores.indexOf("#", i + 1);
 		}
 	}
 
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < cantidad; i++)
 	{
 		if (digitalRead(sensores[i]) != estado[i])
 		{
@@ -188,8 +184,27 @@ void loop()
 
 			int statusCode = client.responseStatusCode();
 			String response = client.responseBody();
-
-			//Serial.println(response);
 		}
+	}
+	for (int i = 0; i < cantidad2; i++)
+	{
+		if(!digitalRead(pulsadores[i]) && !presionado[i])
+		{
+			presionado[i]=true;
+			estado2[i]= !estado2[i];
+			digitalWrite(reles[i],estado2[i]);
+			String url = "set/" + String(id2[i]);
+			if (estado2[i])
+				url += "/encendido";
+			else
+				url += "/apagado";
+
+			client.get(url);
+
+			int statusCode = client.responseStatusCode();
+			String response = client.responseBody();
+		}
+		if(digitalRead(pulsadores[i]) && presionado[i])
+			presionado[i]=false;
 	}
 }
