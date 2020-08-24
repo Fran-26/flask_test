@@ -44,7 +44,7 @@ def valores():
 def valoresArduino():
 	dictionary=""
 	for registro in estado:
-		if registro.tipo == "magnetico" OR registro.tipo == "pir":
+		if registro.tipo == "magnetico" or registro.tipo == "pir":
 		dictionary += "#{id}:{estado};".format(id = registro.id, estado = registro.estado)
 	return (dictionary)
 
