@@ -13,11 +13,6 @@ for id, registro in enumerate(valores):
 
 app = Flask(__name__)
 
-estado = []
-valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID ORDER BY SENSORES.ID ASC").fetchall()
-for id, registro in enumerate(valores):
-	estado.append({"id": registro.id, "sensor": registro.sensor, "estado": registro.estado, "tipo": registro.tipo})
-
 @app.route("/")
 def index():
 	name= "Hello, world2!"
@@ -74,9 +69,9 @@ def set(id, estado):
 	db.execute("UPDATE ESTADO SET ESTADO='{estado}' WHERE ID={id};".format(id=id, estado=estado))
 	db.commit()
 
-	for fila in tablaEstado:
-		if fila["id"]== id:
-			fila["estado"] = estado
+	for i in range(len(tablaEstado)):
+		if tablaEstado[i]["id"] == id:
+			tablaEstado[i]["estado"] = estado
 
 	x="{id} guardado {estado}".format(id=id, estado=estado)
 	return (x)
