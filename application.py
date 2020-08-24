@@ -99,7 +99,7 @@ def estadoLuces():
 @app.route("/estadoLucesArduino")
 def estadoLucesArduino():
 	dictionary = ""
-	for fila in estado:
+	for fila in tablaEstado:
 		if fila["tipo"] == "luz":
 			dictionary += "#{id}:{estado};".format(id = fila["id"], estado = fila["estado"])
 	return (dictionary)
