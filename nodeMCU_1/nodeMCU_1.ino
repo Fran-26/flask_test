@@ -62,7 +62,7 @@ void handleRoot() {
 			String response = client.responseBody();
 		}
 	}
-	
+
 	String html = "<html><head><title>Control De Salidas Programable</title>"
 		"<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css\">"
 		"<style>\div {margin:auto; text-align:center; font-size:200%;}</style>"
@@ -132,7 +132,7 @@ void setup()
 		}
 		i = valores.indexOf("#", i + 1);
 	}
-	
+
 	server.on("/", handleRoot);
 	server.begin();
 }
@@ -167,7 +167,7 @@ void loop()
 						estado2[a] = true;
 					digitalWrite (reles[a], estado2[a]);
 				}
-			}	
+			}
 			i = valores.indexOf("#", i + 1);
 		}
 	}

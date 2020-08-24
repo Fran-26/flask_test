@@ -6,6 +6,11 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 engine = create_engine("postgresql://pi:0000@localhost:5432/home")
 db = scoped_session(sessionmaker(bind=engine))
 
+tablaEstado = []
+valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID ORDER BY SENSORES.ID ASC").fetchall()
+for id, registro in enumerate(valores):
+	tablaEstado.append({"id": registro.id, "sensor": registro.sensor, "estado": registro.estado, "tipo": registro.tipo})
+
 app = Flask(__name__)
 
 estado = []
@@ -41,17 +46,17 @@ def luces():
 @app.route("/valores")
 def valores():
 	dictionary=[]
-	for id, registro in estado:
-		if registro.tipo != "luz":
-			dictionary.append({"id": registro.id, "sensor": registro.sensor, "estado" : registro.estado })
+	for fila in tablaEstado:
+		if fila["tipo"] != "luz":
+			dictionary.append({"sensor": fila["sensor"], "estado": fila["estado"], "id": fila["id"]})
 	return jsonify(dictionary)
 
 @app.route("/valoresArduino")
 def valoresArduino():
 	dictionary = ""
-	for registro in estado:
-		if registro.tipo == "magnetico" or registro.tipo == "pir":
-			dictionary += "#{id}:{estado};".format(id = registro.id, estado = registro.estado)
+	for fila in estado:
+		if fila["tipo"] == "magnetico" or registro["tipo"] == "pir":
+			dictionary += "#{id}:{estado};".format(id = fila["id"], estado = fila["estado"])
 	return (dictionary)
 
 #TO DO:convertir a POST
@@ -65,12 +70,14 @@ def set(id, estado):
 	#if id == 6:
 		#TODO
 
-	try:
-		db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, '{estado}');".format(id=id, estado=estado))
-		db.execute("UPDATE ESTADO SET ESTADO='{estado}' WHERE ID={id};".format(id=id, estado=estado))
-		db.commit()
-	except:
-		return "Algo salio mal"
+	db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, '{estado}');".format(id=id, estado=estado))
+	db.execute("UPDATE ESTADO SET ESTADO='{estado}' WHERE ID={id};".format(id=id, estado=estado))
+	db.commit()
+
+	for fila in tablaEstado:
+		if fila["id"]== id:
+			fila["estado"] = estado
+
 	x="{id} guardado {estado}".format(id=id, estado=estado)
 	return (x)
 
@@ -89,15 +96,15 @@ def tabla(id):
 @app.route("/estadoLuces")
 def estadoLuces():
 	dictionary=[]
-	for id, registro in estado:
-		if registro.tipo == "luz":
-			dictionary.append({"id": registro.id, "sensor": registro.sensor, "estado" : registro.estado })
+	for fila in tablaEstado:
+		if fila["tipo"] == "luz":
+			dictionary.append({"sensor": fila["sensor"], "estado": fila["estado"], "id": fila["id"]})
 	return jsonify(dictionary)
 
 @app.route("/estadoLucesArduino")
 def estadoLucesArduino():
 	dictionary = ""
-	for id, registro in estado:
-		if registro.tipo == "luz":
-			dictionary += "#{id}:{estado};".format(id = registro.id, estado = registro.estado)
+	for fila in estado:
+		if fila.tipo == "luz":
+			dictionary += "#{id}:{estado};".format(id = fila["id"], estado = fila["estado"])
 	return (dictionary)
