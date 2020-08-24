@@ -1,4 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
+
+engine = create_engine("postgresql://pi:0000@localhost:5432/home")
+db = scoped_session(sessionmaker(bind=engine))
 
 app = Flask(__name__)
 
