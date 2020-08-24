@@ -105,6 +105,6 @@ def estadoLuces():
 def estadoLucesArduino():
 	dictionary = ""
 	for fila in estado:
-		if fila.tipo == "luz":
+		if fila["tipo"] == "luz":
 			dictionary += "#{id}:{estado};".format(id = fila["id"], estado = fila["estado"])
 	return (dictionary)
