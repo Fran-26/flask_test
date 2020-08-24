@@ -48,7 +48,7 @@ def valores():
 
 @app.route("/valoresArduino")
 def valoresArduino():
-	dictionary=""
+	dictionary = ""
 	for registro in estado:
 		if registro.tipo == "magnetico" or registro.tipo == "pir":
 			dictionary += "#{id}:{estado};".format(id = registro.id, estado = registro.estado)
@@ -96,7 +96,7 @@ def estadoLuces():
 
 @app.route("/estadoLucesArduino")
 def estadoLucesArduino():
-	dictionary=[]
+	dictionary = ""
 	for id, registro in estado:
 		if registro.tipo == "luz":
 			dictionary += "#{id}:{estado};".format(id = registro.id, estado = registro.estado)
