@@ -1,6 +1,13 @@
+<!-- <html> -->
 {% extends "template.html" %}
-{% block head %}{% endblock  %}
+
+{% block head %}
+	<script src="{{ url_for('static', filename='luces.js') }}"></script>
+{% endblock  %}
+
 {% block heading %} Luces {% endblock %}
+
+
 {% block body  %}
 	<a href="{{ url_for('index') }}">Volver a Inicio</a>
 	<br>
