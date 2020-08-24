@@ -45,7 +45,7 @@ def valoresArduino():
 	dictionary=""
 	for registro in estado:
 		if registro.tipo == "magnetico" or registro.tipo == "pir":
-		dictionary += "#{id}:{estado};".format(id = registro.id, estado = registro.estado)
+			dictionary += "#{id}:{estado};".format(id = registro.id, estado = registro.estado)
 	return (dictionary)
 
 #TO DO:convertir a POST
