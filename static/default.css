@@ -37,6 +37,10 @@
 	bottom: 25%;
 	left: 4%;
 }
+#luz_4 {
+	top: 30%;
+	left: 40%;
+}
 #cuerpo {
 	position: relative;
 }
