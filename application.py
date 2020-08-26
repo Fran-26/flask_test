@@ -49,7 +49,7 @@ def valores():
 @app.route("/valoresArduino")
 def valoresArduino():
 	dictionary = ""
-	for fila in estado:
+	for fila in tablaEstado:
 		if fila["tipo"] == "magnetico" or registro["tipo"] == "pir":
 			dictionary += "#{id}:{estado};".format(id = fila["id"], estado = fila["estado"])
 	return (dictionary)
