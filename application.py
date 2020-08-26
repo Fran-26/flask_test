@@ -70,9 +70,8 @@ def set(id, estado):
 	db.commit()
 
 	for i in range(len(tablaEstado)):
-		if tablaEstado[i]["id"] == id:
+		if int(tablaEstado[i]["id"]) == id:
 			tablaEstado[i]["estado"] = estado
-			print(tablaEstado[i])
 
 	x="{id} guardado {estado}".format(id=id, estado=estado)
 	return (x)
