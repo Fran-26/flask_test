@@ -7,7 +7,7 @@ engine = create_engine("postgresql://pi:0000@localhost:5432/home")
 db = scoped_session(sessionmaker(bind=engine))
 
 tablaEstado = []
-valores = db.execute("SELECT * FROM ESTADO JOIN SENSORES ON SENSORES.ID=ESTADO.ID ORDER BY SENSORES.ID ASC").fetchall()
+valores = db.execute("SELECT * FROM ESTADO ORDER BY ID ASC").fetchall()
 for id, registro in enumerate(valores):
 	tablaEstado.append({"id": registro.id, "sensor": registro.sensor, "estado": registro.estado, "tipo": registro.tipo})
 
@@ -66,7 +66,7 @@ def set(id, estado):
 		#TODO
 
 	db.execute("INSERT INTO REGISTRO (ID, ESTADO) VALUES ({id}, '{estado}');".format(id=id, estado=estado))
-	db.execute("UPDATE ESTADO SET ESTADO='{estado}' WHERE ID={id};".format(id=id, estado=estado))
+	db.execute("UPDATE SENSORES SET ESTADO='{estado}' WHERE ID={id};".format(id=id, estado=estado))
 	db.commit()
 
 	for i in range(len(tablaEstado)):
@@ -78,7 +78,7 @@ def set(id, estado):
 
 @app.route("/tabla/<string:id>")
 def tabla(id):
-	query = db.execute("SELECT * FROM SENSORES JOIN REGISTRO ON REGISTRO.ID=SENSORES.ID WHERE SENSORES.ID={id} ORDER BY TIEMPO DESC".format(id=id)).fetchall()
+	query = db.execute("SELECT * FROM SENSORES JOIN REGISTRO ON REGISTRO.ID=SENSORES.ID WHERE SENSORES.ID={id} ORDER BY TIEMPO DESC LIMIT 20".format(id=id)).fetchall()
 
 	if query is None:
 		return "Error, no existe el sensor numero {}".format(id)
