@@ -7,7 +7,7 @@ engine = create_engine("postgresql://pi:0000@localhost:5432/home")
 db = scoped_session(sessionmaker(bind=engine))
 
 tablaEstado = []
-valores = db.execute("SELECT * FROM ESTADO ORDER BY ID ASC").fetchall()
+valores = db.execute("SELECT * FROM SENSORES ORDER BY ID ASC").fetchall()
 for id, registro in enumerate(valores):
 	tablaEstado.append({"id": registro.id, "sensor": registro.sensor, "estado": registro.estado, "tipo": registro.tipo})
 
