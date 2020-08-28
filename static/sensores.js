@@ -57,6 +57,8 @@ function update (){
 							document.getElementById(id).className = "btn btn-success";
 						else if (item.estado == 'abierto' || item.estado == 'activado')
 							document.getElementById(id).className = "btn btn-danger";
+						else
+							document.getElementById(id).className = "btn btn-info";
 					}
 					else {
 						if (item.estado == 'desactivado')

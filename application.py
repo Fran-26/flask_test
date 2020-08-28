@@ -50,7 +50,7 @@ def valores():
 def valoresArduino():
 	dictionary = ""
 	for fila in tablaEstado:
-		if fila["tipo"] == "magnetico" or registro["tipo"] == "pir":
+		if fila["tipo"] == "sensor":
 			dictionary += "#{id}:{estado};".format(id = fila["id"], estado = fila["estado"])
 	return (dictionary)
 
