@@ -13,8 +13,8 @@
 	left: 7%;
 }
 #sensor_3 {
-	top: 30%;
-	left: 20%;
+	top: 39%;
+	left: 39%;
 }
 #sensor_4 {
 	top: 64%;
@@ -22,15 +22,19 @@
 }
 #sensor_5 {
 	top: 64%;
-	left: 40%;
+	left: 55%;
 }
 #sensor_6 {
-	top: 39%;
-	left: 39%;
+	top: 30%;
+	left: 50%;
 }
 #sensor_7 {
-	top: 24%;
-	left: 29%;
+	top: 20%;
+	left: 33%;
+}
+#sensor_8 {
+	top: 30%;
+	left: 20%;
 }
 #luz_1 {
 	bottom: 25%;
